@@ -1,0 +1,48 @@
+:root {
+  --ms-color-bg: #ffffff;
+  --ms-color-text: #1f2a34;
+  --ms-color-muted: #4a5a67;
+  --ms-color-link: #006298;
+  --ms-color-link-hover: #004c78;
+  --ms-color-crimson: #800000;
+  --ms-color-crimson-dark: #640000;
+  --ms-color-panel: #f4f6f8;
+  --ms-color-border: #d5dde3;
+  --ms-color-focus: #0f6ab0;
+
+  --ms-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ms-font-serif: Georgia, 'Times New Roman', Times, serif;
+
+  --ms-fs-0: 1rem;
+  --ms-fs-1: 1.125rem;
+  --ms-fs-2: 1.25rem;
+  --ms-fs-3: 1.5rem;
+  --ms-fs-4: 2rem;
+  --ms-fs-5: 2.75rem;
+
+  --ms-lh-body: 1.6;
+  --ms-lh-heading: 1.15;
+
+  --ms-space-1: 0.5rem;
+  --ms-space-2: 0.75rem;
+  --ms-space-3: 1rem;
+  --ms-space-4: 1.5rem;
+  --ms-space-5: 2rem;
+  --ms-space-6: 2.5rem;
+  --ms-space-7: 3.5rem;
+
+  --ms-radius-sm: 0.25rem;
+  --ms-radius-md: 0.5rem;
+  --ms-radius-pill: 999px;
+
+  --ms-shadow-1: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --ms-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: 40rem) {
+  :root {
+    --ms-fs-0: 1.125rem;
+    --ms-fs-4: 2.25rem;
+    --ms-fs-5: 3.35rem;
+  }
+}

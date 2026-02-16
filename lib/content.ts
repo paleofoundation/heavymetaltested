@@ -13,7 +13,7 @@ export type BaseFrontmatter = {
   description: string;
   updatedAt?: string;
   publishedAt?: string;
-  references: string[];
+  references?: string[];
 };
 
 export async function markdownToHtml(markdown: string) {
@@ -26,7 +26,7 @@ export function getSlugs(type: string) {
   return fs.readdirSync(dir).filter((f) => f.endsWith('.mdx')).map((f) => f.replace(/\.mdx$/, ''));
 }
 
-export async function getBySlug<T extends BaseFrontmatter>(type: string, slug: string) {
+export async function getBySlug<T>(type: string, slug: string) {
   const realSlug = slug.replace(/\.mdx$/, '');
   const fullPath = path.join(contentRoot, type, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -38,7 +38,7 @@ export async function getBySlug<T extends BaseFrontmatter>(type: string, slug: s
   };
 }
 
-export function getAll<T extends BaseFrontmatter>(type: string): T[] {
+export function getAll<T>(type: string): T[] {
   const slugs = getSlugs(type);
   const items = slugs.map((slug) => {
     const fullPath = path.join(contentRoot, type, `${slug}.mdx`);
@@ -51,8 +51,10 @@ export function getAll<T extends BaseFrontmatter>(type: string): T[] {
   });
 
   return items.sort((a, b) => {
-    const ad = new Date((a as { publishedAt?: string; updatedAt?: string }).publishedAt || a.updatedAt || 0).valueOf();
-    const bd = new Date((b as { publishedAt?: string; updatedAt?: string }).publishedAt || b.updatedAt || 0).valueOf();
+    const adata = a as { publishedAt?: string; updatedAt?: string };
+    const bdata = b as { publishedAt?: string; updatedAt?: string };
+    const ad = new Date(adata.publishedAt || adata.updatedAt || 0).valueOf();
+    const bd = new Date(bdata.publishedAt || bdata.updatedAt || 0).valueOf();
     return bd - ad;
   });
 }

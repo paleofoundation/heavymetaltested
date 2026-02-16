@@ -1,0 +1,45 @@
+.ms-container {
+  width: min(100% - 2.5rem, 64rem);
+  margin-inline: auto;
+}
+
+.ms-section {
+  padding-block: 2.5rem;
+}
+
+.ms-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.ms-grid-2 {
+  grid-template-columns: 1fr;
+}
+
+.ms-grid-3 {
+  grid-template-columns: 1fr;
+}
+
+.ms-grid-4 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 40rem) {
+  .ms-section {
+    padding-block: 3.5rem;
+  }
+
+  .ms-grid-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ms-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 56rem) {
+  .ms-grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

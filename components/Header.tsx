@@ -1,4 +1,7 @@
+'use client';
+
 import Link from 'next/link';
+import { useEffect, useRef, useState } from 'react';
 
 const navItems = [
   ['Big 8', '/big-8'],
@@ -12,74 +15,49 @@ const navItems = [
   ['Editorial Standards', '/editorial-standards']
 ] as const;
 
-const SearchIcon = () => (
-  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M11.5 10.5L15 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-    <circle cx="7" cy="7" r="4.8" stroke="currentColor" strokeWidth="1.8" />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 3L13 13M13 3L3 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-  </svg>
-);
-
 export default function Header() {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onDocClick(event: MouseEvent) {
+      if (!searchRef.current?.contains(event.target as Node)) setSearchOpen(false);
+    }
+    if (searchOpen) document.addEventListener('click', onDocClick);
+    return () => document.removeEventListener('click', onDocClick);
+  }, [searchOpen]);
+
   return (
-    <header className="hmtf-header-wrap">
-      <div className="rvt-header-global hmtf-header-global">
-        <div className="rvt-container-xl hmtf-header-stack">
-          <div className="hmtf-search-row" data-rvt-disclosure="search" data-rvt-close-click-outside>
-            <button className="rvt-global-toggle hmtf-search-toggle" data-rvt-disclosure-toggle="search" aria-expanded="false">
-              <span className="rvt-sr-only">Search</span>
-              <span className="hmtf-search-open-icon"><SearchIcon /></span>
-              <span className="hmtf-search-close-icon"><CloseIcon /></span>
+    <header className="ms-header">
+      <div className="ms-container" ref={searchRef}>
+        <div className="ms-header-top">
+          <Link href="/" className="ms-brand">
+            <span className="ms-brand-kicker">Heavy Metal Facts</span>
+            <span className="ms-brand-title">Evidence-first newsroom</span>
+          </Link>
+          <div className="ms-header-controls">
+            <button className="ms-icon-btn" aria-expanded={searchOpen} aria-controls="ms-search" onClick={() => setSearchOpen((s) => !s)}>
+              <span className="ms-sr-only">Toggle search</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.5 4a6.5 6.5 0 105.1 10.5l4.4 4.4 1.4-1.4-4.4-4.4A6.5 6.5 0 0010.5 4zm0 2a4.5 4.5 0 110 9 4.5 4.5 0 010-9z" fill="currentColor"/></svg>
             </button>
-            <form
-              className="rvt-header-global__search hmtf-search-form"
-              data-rvt-disclosure-target="search"
-              role="search"
-              method="get"
-              action="/search"
-              hidden
-            >
-              <label className="rvt-sr-only" htmlFor="search">Search</label>
-              <div className="rvt-input-group">
-                <input id="search" className="rvt-input-group__input rvt-text-input" type="text" name="q" placeholder="Search HeavyMetalFacts.com" />
-                <div className="rvt-input-group__append">
-                  <button className="rvt-button" type="submit">Search</button>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <div className="hmtf-brand-row">
-            <Link href="/" className="rvt-lockup__tab hmtf-brand" aria-label="Heavy Metal Facts home">
-              <span className="hmtf-brand-kicker">Heavy Metal Facts</span>
-              <span className="hmtf-brand-title">Evidence-first newsroom on the Big 8</span>
-            </Link>
-
-            <nav className="hmtf-main-nav" aria-label="Primary">
-              {navItems.map(([label, href]) => (
-                <Link href={href} key={href} className="hmtf-main-nav-link">{label}</Link>
-              ))}
-            </nav>
-
-            </div>
-
-          <div data-rvt-disclosure="mobile-nav" data-rvt-close-click-outside>
-            <button className="rvt-global-toggle hmtf-menu-toggle" aria-expanded="false" data-rvt-disclosure-toggle="mobile-nav">
-              <span className="rvt-sr-only">Menu</span>
-              Menu
-            </button>
-            <nav className="hmtf-mobile-nav" data-rvt-disclosure-target="mobile-nav" aria-label="Mobile" hidden>
-              {navItems.map(([label, href]) => (
-                <Link href={href} key={`${href}-mobile`} className="hmtf-mobile-nav-link">{label}</Link>
-              ))}
-            </nav>
+            <button className="ms-menu-btn" aria-expanded={menuOpen} aria-controls="ms-nav" onClick={() => setMenuOpen((m) => !m)}>Menu</button>
           </div>
         </div>
+        {searchOpen && (
+          <div className="ms-search-panel" id="ms-search">
+            <form className="ms-search-form" role="search" action="/search" method="get">
+              <label className="ms-sr-only" htmlFor="ms-q">Search</label>
+              <input id="ms-q" className="ms-input" name="q" placeholder="Search HeavyMetalFacts.com" />
+              <button className="ms-btn ms-btn-primary" type="submit">Search</button>
+            </form>
+          </div>
+        )}
+        <nav id="ms-nav" className="ms-nav" data-open={menuOpen} aria-label="Primary navigation">
+          {navItems.map(([label, href]) => (
+            <Link href={href} key={href}>{label}</Link>
+          ))}
+        </nav>
       </div>
     </header>
   );
