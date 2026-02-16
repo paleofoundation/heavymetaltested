@@ -35,7 +35,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-      <section className="section container"><div className="quote">“Limits only work when sampling, methods, and interpretation are specified clearly enough for labs to reproduce.”</div></section>
+      <section className="section container"><div className="quote">&ldquo;Limits only work when sampling, methods, and interpretation are specified clearly enough for labs to reproduce.&rdquo;</div></section>
       <section className="section container">
         <h2>Latest stories</h2>
         <div className="news-grid">
@@ -49,6 +49,7 @@ export default function HomePage() {
         <div className="card"><h3>Learn what HMTc is</h3><p>Neutral orientation to how certification frameworks operationalize category-specific contaminant controls.</p><Link href="/standards#hmtc">Read neutral explainer</Link></div>
         <div className="card"><h3>Newsletter</h3><p>Get weekly briefings and method notes.</p><input aria-label="newsletter" className="search-input" placeholder="Email address" /></div>
       </section>
+      <p style={{ fontSize: '0.75rem', textAlign: 'center', opacity: 0.5, margin: '2rem 0 0' }}>Build stamp: 2026-02-16T06:00:00Z</p>
     </>
   );
 }
