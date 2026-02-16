@@ -23,5 +23,7 @@ for (const type of types) {
     });
   }
 }
+const outDir = path.join(root, 'public');
+fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(root, 'public', 'search-index.json'), JSON.stringify(records, null, 2));
 console.log(`search-index: ${records.length} records`);
