@@ -1,56 +1,88 @@
 /* ----------------------------------------------------------------
-   HEADER / TOP BAR
+   HEADER / TOP BAR — Two-row IU Bloomington layout
    ---------------------------------------------------------------- */
 
 .topbar {
   background: var(--iu-white);
   border-top: 5px solid var(--iu-crimson);
-  border-bottom: 1px solid var(--iu-border);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
-.topbar-inner {
+.topbar-brand {
   display: flex;
   align-items: center;
-  gap: var(--iu-space-lg);
-  padding: var(--iu-space-sm) 0;
+  justify-content: space-between;
+  padding: var(--iu-space-md) var(--iu-space-md);
 }
 
 .brand {
-  font-weight: 700;
-  font-size: var(--iu-ts-20);
-  color: var(--iu-text);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--iu-space-sm);
   text-decoration: none;
-  white-space: nowrap;
-  letter-spacing: -0.01em;
+  color: var(--iu-text);
 }
 
 .brand:hover {
-  color: var(--iu-crimson);
+  color: var(--iu-text);
   text-decoration: none;
+}
+
+.brand-logo {
+  flex-shrink: 0;
+}
+
+.brand-text {
+  font-weight: 700;
+  font-size: var(--iu-ts-20);
+  letter-spacing: -0.01em;
+}
+
+.search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--iu-crimson);
+  color: var(--iu-white);
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease;
+}
+
+.search-icon:hover {
+  background: var(--iu-crimson-dark);
+  color: var(--iu-white);
+  text-decoration: none;
+}
+
+.topbar-nav-wrap {
+  border-top: 1px solid var(--iu-border);
+  border-bottom: 1px solid var(--iu-border);
 }
 
 .nav {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--iu-space-md);
-  font-size: var(--iu-ts-14);
+  gap: var(--iu-space-xl);
+  font-size: var(--iu-ts-16);
+  padding: var(--iu-space-sm) var(--iu-space-md);
 }
 
 .nav a {
   text-decoration: none;
   color: var(--iu-text);
-  font-weight: 500;
+  font-weight: 400;
   padding: var(--iu-space-xxs) 0;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.2s ease, color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
 .nav a:hover {
   color: var(--iu-crimson);
-  border-bottom-color: var(--iu-crimson);
   text-decoration: none;
 }
 
@@ -86,10 +118,8 @@
 .mobile-menu summary {
   cursor: pointer;
   font-weight: 600;
-  font-size: var(--iu-ts-14);
-  padding: var(--iu-space-xs) var(--iu-space-sm);
-  border: 1px solid var(--iu-border);
-  border-radius: var(--iu-radius-md);
+  font-size: var(--iu-ts-16);
+  padding: var(--iu-space-xs) 0;
   list-style: none;
 }
 
@@ -99,61 +129,78 @@
 
 .mobile-menu .nav {
   flex-direction: column;
-  padding: var(--iu-space-md) 0;
+  gap: var(--iu-space-sm);
+  padding: var(--iu-space-md) 0 var(--iu-space-sm);
 }
 
 @media (max-width: 67.5em) {
-  .topbar-inner {
-    flex-wrap: wrap;
-  }
-
   .desktop-nav {
     display: none;
   }
 
   .mobile-menu {
     display: block;
-  }
-
-  .search-input {
-    margin-left: 0;
-    width: 100%;
-    order: 10;
+    padding: var(--iu-space-sm) var(--iu-space-md);
   }
 }
 
 /* ----------------------------------------------------------------
-   HERO
+   HERO — Two-column IU Bloomington layout
    ---------------------------------------------------------------- */
 
 .hero {
-  background: var(--iu-bg-light);
-  padding: var(--iu-space-4xl) 0;
+  background: var(--iu-white);
+  padding: var(--iu-space-3xl) 0 var(--iu-space-4xl);
   border-bottom: 1px solid var(--iu-border);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--iu-space-xl);
+  align-items: center;
 }
 
 .hero h1 {
   font-family: var(--iu-font-serif);
   font-size: var(--iu-ts-32);
+  font-weight: 400;
   color: var(--iu-text);
-  margin-bottom: var(--iu-space-sm);
-  max-width: 28ch;
+  margin-bottom: var(--iu-space-md);
+  line-height: 1.15;
 }
 
 .hero p {
   max-width: 55ch;
   color: var(--iu-text-secondary);
-  font-size: var(--iu-ts-18);
+  font-size: var(--iu-ts-16);
   line-height: var(--iu-lh-loose);
+}
+
+.hero-media {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  border-radius: var(--iu-radius-lg);
+  width: 100%;
+  max-width: 540px;
+  box-shadow: var(--iu-shadow-md);
 }
 
 @media (min-width: 46.25em) {
   .hero {
-    padding: 5rem 0;
+    padding: 4rem 0 5rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--iu-space-3xl);
   }
 
   .hero h1 {
-    font-size: 3rem;
+    font-size: 2.75rem;
   }
 }
 
@@ -172,8 +219,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.25rem;
-  border-radius: var(--iu-radius-md);
+  padding: 0.7rem 1.5rem;
+  border-radius: 2rem;
   font-weight: 600;
   font-size: var(--iu-ts-16);
   border: 0.125rem solid transparent;
@@ -216,7 +263,7 @@
 }
 
 /* ----------------------------------------------------------------
-   CARDS
+   CARDS — IU Bloomington style with arrow + divider
    ---------------------------------------------------------------- */
 
 .card {
@@ -226,7 +273,7 @@
   background: var(--iu-white);
   border-radius: var(--iu-radius-lg);
   box-shadow: var(--iu-shadow-md);
-  padding: var(--iu-space-lg);
+  padding: var(--iu-space-lg) var(--iu-space-lg) var(--iu-space-xl);
   text-decoration: none;
   color: var(--iu-text);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -241,15 +288,41 @@
 
 .card h3 {
   font-size: var(--iu-ts-20);
-  margin-bottom: var(--iu-space-xs);
+  margin-bottom: var(--iu-space-lg);
   color: var(--iu-text);
   line-height: 1.3;
+  padding-right: 2.5rem;
+}
+
+.card::after {
+  content: "\2192";
+  position: absolute;
+  top: var(--iu-space-lg);
+  right: var(--iu-space-lg);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--iu-blue-bg);
+  color: var(--iu-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover::after {
+  background: var(--iu-blue-light);
+  transform: translateX(3px);
 }
 
 .card p {
   color: var(--iu-text-secondary);
   font-size: var(--iu-ts-16);
   margin-bottom: var(--iu-space-xs);
+  padding-top: var(--iu-space-lg);
+  border-top: 1px solid var(--iu-border);
   flex-grow: 1;
 }
 
@@ -407,7 +480,7 @@
    ---------------------------------------------------------------- */
 
 .footer {
-  background: var(--iu-crimson);
+  background: #800001;
   color: var(--iu-white);
   margin-top: var(--iu-space-3xl);
   padding: var(--iu-space-4xl) 0;
@@ -477,7 +550,7 @@
 }
 
 .ms-footer-top {
-  background: var(--iu-crimson);
+  background: #800001;
   color: var(--iu-white);
   padding: 5rem 0 4.5rem;
 }
@@ -815,4 +888,43 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* ----------------------------------------------------------------
+   IMAGE UTILITIES
+   ---------------------------------------------------------------- */
+
+.card-icon {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: var(--iu-space-md);
+  border-radius: 50%;
+}
+
+.card-photo {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  border-radius: var(--iu-radius-lg) var(--iu-radius-lg) 0 0;
+  margin: calc(-1 * var(--iu-space-lg));
+  margin-bottom: var(--iu-space-md);
+  width: calc(100% + 2 * var(--iu-space-lg));
+}
+
+.story-thumb {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+}
+
+.utility-icon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin-bottom: var(--iu-space-sm);
 }
