@@ -1,48 +1,63 @@
 :root {
-  --ms-color-bg: #ffffff;
-  --ms-color-text: #1f2a34;
-  --ms-color-muted: #4a5a67;
-  --ms-color-link: #006298;
-  --ms-color-link-hover: #004c78;
-  --ms-color-crimson: #800000;
-  --ms-color-crimson-dark: #640000;
-  --ms-color-panel: #f4f6f8;
-  --ms-color-border: #d5dde3;
-  --ms-color-focus: #0f6ab0;
+  --iu-crimson: #990000;
+  --iu-crimson-dark: #800000;
+  --iu-crimson-active: #5a0c0c;
+  --iu-mahogany: #7a1705;
 
-  --ms-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --ms-font-serif: Georgia, 'Times New Roman', Times, serif;
+  --iu-text: #243142;
+  --iu-text-secondary: #4c5a69;
+  --iu-text-muted: #75838f;
 
-  --ms-fs-0: 1rem;
-  --ms-fs-1: 1.125rem;
-  --ms-fs-2: 1.25rem;
-  --ms-fs-3: 1.5rem;
-  --ms-fs-4: 2rem;
-  --ms-fs-5: 2.75rem;
+  --iu-bg: #ffffff;
+  --iu-bg-light: #f8f9fa;
+  --iu-bg-cream: #edebeb;
+  --iu-border: #e2e7e9;
 
-  --ms-lh-body: 1.6;
-  --ms-lh-heading: 1.15;
+  --iu-blue: #006298;
+  --iu-blue-hover: #004f80;
+  --iu-blue-light: #c6ecf6;
+  --iu-blue-bg: #edfafd;
 
-  --ms-space-1: 0.5rem;
-  --ms-space-2: 0.75rem;
-  --ms-space-3: 1rem;
-  --ms-space-4: 1.5rem;
-  --ms-space-5: 2rem;
-  --ms-space-6: 2.5rem;
-  --ms-space-7: 3.5rem;
+  --iu-white: #ffffff;
+  --iu-focus: #006298;
 
-  --ms-radius-sm: 0.25rem;
-  --ms-radius-md: 0.5rem;
-  --ms-radius-pill: 999px;
+  --iu-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --iu-font-serif: Georgia, "Times New Roman", Times, serif;
 
-  --ms-shadow-1: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --ms-shadow-2: 0 8px 24px rgba(0, 0, 0, 0.12);
-}
+  --iu-ts-12: 0.75rem;
+  --iu-ts-14: 0.875rem;
+  --iu-ts-16: 1rem;
+  --iu-ts-18: 1.125rem;
+  --iu-ts-20: 1.25rem;
+  --iu-ts-23: 1.4375rem;
+  --iu-ts-26: 1.625rem;
+  --iu-ts-29: 1.8125rem;
+  --iu-ts-32: 2rem;
+  --iu-ts-41: 2.5625rem;
 
-@media (min-width: 40rem) {
-  :root {
-    --ms-fs-0: 1.125rem;
-    --ms-fs-4: 2.25rem;
-    --ms-fs-5: 3.35rem;
-  }
+  --iu-lh-body: 1.5;
+  --iu-lh-heading: 1.2;
+  --iu-lh-loose: 1.65;
+
+  --iu-space-xxs: 0.25rem;
+  --iu-space-xs: 0.5rem;
+  --iu-space-sm: 0.75rem;
+  --iu-space-md: 1rem;
+  --iu-space-lg: 1.5rem;
+  --iu-space-xl: 2rem;
+  --iu-space-xxl: 2.5rem;
+  --iu-space-3xl: 3rem;
+  --iu-space-4xl: 4rem;
+
+  --iu-radius-sm: 0.125rem;
+  --iu-radius-md: 0.25rem;
+  --iu-radius-lg: 0.5rem;
+  --iu-radius-circle: 999rem;
+
+  --iu-shadow-sm: 0 0.125rem 0.5rem rgba(36, 49, 66, 0.1);
+  --iu-shadow-md: 0 0.25rem 1rem rgba(36, 49, 66, 0.2);
+
+  --iu-container-max: 71.25rem;
+  --iu-container-narrow: 52.5rem;
 }
