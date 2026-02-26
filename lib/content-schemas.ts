@@ -91,6 +91,9 @@ export const contentSchemas: Record<string, ContentTypeSchema> = {
     slugPrefix: '/news/',
     fields: [
       ...shared,
+      { name: 'featuredImage', label: 'Featured Image', type: 'image' },
+      { name: 'featuredImageAlt', label: 'Featured Image Alt Text', type: 'text' },
+      { name: 'featuredImageCaption', label: 'Featured Image Caption', type: 'text' },
       { name: 'publishedAt', label: 'Published At', type: 'date', required: true },
       { name: 'updatedAt', label: 'Updated At', type: 'date' },
       { name: 'metals', label: 'Metals', type: 'tags' },

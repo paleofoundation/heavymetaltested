@@ -2,9 +2,18 @@ import { getAll } from '@/lib/content';
 import { categories, metals } from '@/lib/taxonomy';
 import NewsContent from './NewsContent';
 
-type Post = { title: string; slug: string; description: string; publishedAt: string; metals?: string[]; categories?: string[] };
+type Post = {
+  title: string;
+  slug: string;
+  description: string;
+  publishedAt: string;
+  metals?: string[];
+  categories?: string[];
+  featuredImage?: string;
+  featuredImageAlt?: string;
+};
 
 export default function NewsPage() {
   const all = getAll<Post>('news');
-  return <NewsContent posts={all} metals={metals} categories={categories} />;
+  return <NewsContent posts={all} metals={[...metals]} categories={[...categories]} />;
 }
