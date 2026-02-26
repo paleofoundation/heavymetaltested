@@ -16,6 +16,8 @@ export default function ArticleShell({
   slug?: string;
   authors?: AuthorInfo[];
 }) {
+  const hasAuthors = authors && authors.length > 0;
+
   return (
     <article className="article">
       <header className="article-hero">
@@ -24,9 +26,10 @@ export default function ArticleShell({
             <h1 className="article-title">{title}</h1>
             <p className="article-description">{description}</p>
             {meta && <div className="article-meta">{meta}</div>}
-            {authors && authors.length > 0 && <AuthorAvatarStrip authors={authors} />}
           </div>
-          <div className="article-hero-accent" aria-hidden="true" />
+          <div className={`article-hero-accent${hasAuthors ? ' has-authors' : ''}`} aria-hidden={!hasAuthors}>
+            {hasAuthors && <AuthorAvatarStrip authors={authors} />}
+          </div>
         </div>
       </header>
 

@@ -1004,6 +1004,32 @@ a.card:hover p {
   opacity: 0.9;
 }
 
+.article-hero-accent.has-authors {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 0 8% 0 30%;
+  padding-top: 28%;
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+@media (max-width: 46.24em) {
+  .article-hero-accent.has-authors {
+    position: relative;
+    width: 100%;
+    right: 0;
+    clip-path: none;
+    padding: var(--iu-space-lg) var(--iu-space-md);
+    justify-content: flex-start;
+  }
+  .article-hero-accent.has-authors .author-strip {
+    text-align: left;
+  }
+  .article-hero-accent.has-authors .author-strip-list {
+    align-items: flex-start;
+  }
+}
+
 @media (min-width: 46.25em) {
   .article-hero-inner {
     padding-block: var(--iu-space-4xl);
@@ -1175,7 +1201,8 @@ sup.cite-ref a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--iu-space-sm);
-  margin-top: var(--iu-space-lg);
+  z-index: 2;
+  text-align: right;
 }
 
 .author-strip-label {
@@ -1190,6 +1217,7 @@ sup.cite-ref a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--iu-space-xs);
+  align-items: flex-end;
 }
 
 .author-strip-item {

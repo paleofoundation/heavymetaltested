@@ -78,6 +78,33 @@ export async function deleteFileFromGitHub(
   return { ok: true };
 }
 
+export async function writeBinaryToGitHub(
+  repoPath: string,
+  base64Content: string,
+  commitMessage: string,
+): Promise<{ ok: boolean; error?: string }> {
+  const sha = await getFileSha(repoPath);
+
+  const payload: Record<string, string> = {
+    message: commitMessage,
+    content: base64Content,
+    branch: GITHUB_BRANCH,
+  };
+  if (sha) payload.sha = sha;
+
+  const res = await fetch(`${API_BASE}/${repoPath}`, {
+    method: 'PUT',
+    headers: headers(),
+    body: JSON.stringify(payload),
+  });
+
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    return { ok: false, error: data.message || `GitHub API error (${res.status})` };
+  }
+  return { ok: true };
+}
+
 export async function fileExistsOnGitHub(repoPath: string): Promise<boolean> {
   const sha = await getFileSha(repoPath);
   return sha !== null;

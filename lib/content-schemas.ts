@@ -1,7 +1,7 @@
 import type { SectionDef } from './metal-sections';
 import { metalSections } from './metal-sections';
 
-export type FieldType = 'text' | 'textarea' | 'date' | 'tags';
+export type FieldType = 'text' | 'textarea' | 'date' | 'tags' | 'image';
 
 export interface FieldDef {
   name: string;
@@ -66,7 +66,7 @@ export const contentSchemas: Record<string, ContentTypeSchema> = {
       { name: 'slug', label: 'Slug', type: 'text', required: true },
       { name: 'description', label: 'Short Bio', type: 'textarea', required: true },
       { name: 'role', label: 'Role', type: 'text' },
-      { name: 'avatar', label: 'Avatar Path', type: 'text' },
+      { name: 'avatar', label: 'Avatar Photo', type: 'image' },
       { name: 'orcid', label: 'ORCID iD', type: 'text' },
       { name: 'updatedAt', label: 'Updated At', type: 'date' },
     ],

@@ -20,6 +20,71 @@ interface ContentEditorProps {
   sections?: SectionDef[];
 }
 
+function ImageUpload({ value, onChange, fieldName }: { value: string; onChange: (v: string) => void; fieldName: string }) {
+  const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState('');
+
+  async function handleFile(file: File) {
+    setUploading(true);
+    setError('');
+    const form = new FormData();
+    form.append('file', file);
+    form.append('destination', 'public/images/authors');
+    try {
+      const res = await fetch('/api/upload', { method: 'POST', body: form });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error || 'Upload failed');
+      } else {
+        onChange(data.path);
+      }
+    } catch {
+      setError('Upload failed');
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--iu-space-xs)' }}>
+      {value && (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--iu-space-sm)' }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={value}
+            alt={fieldName}
+            style={{ width: 64, height: 64, borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--iu-border)' }}
+          />
+          <span style={{ fontSize: 'var(--iu-ts-12)', color: 'var(--iu-text-muted)', wordBreak: 'break-all' }}>{value}</span>
+        </div>
+      )}
+      <div style={{ display: 'flex', gap: 'var(--iu-space-xs)', alignItems: 'center' }}>
+        <label className="ms-btn ms-btn-outline" style={{ cursor: 'pointer', fontSize: 'var(--iu-ts-14)' }}>
+          {uploading ? 'Uploading...' : value ? 'Change Photo' : 'Upload Photo'}
+          <input
+            type="file"
+            accept="image/*"
+            style={{ display: 'none' }}
+            disabled={uploading}
+            onChange={(e) => {
+              const f = e.target.files?.[0];
+              if (f) handleFile(f);
+            }}
+          />
+        </label>
+        <input
+          className="ms-input"
+          placeholder="Or paste image path"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          style={{ flex: 1, fontSize: 'var(--iu-ts-14)' }}
+        />
+      </div>
+      {error && <span style={{ color: '#b91c1c', fontSize: 'var(--iu-ts-12)' }}>{error}</span>}
+    </div>
+  );
+}
+
 function TagInput({ value, onChange }: { value: string[]; onChange: (v: string[]) => void }) {
   const [input, setInput] = useState('');
 
@@ -172,6 +237,13 @@ export default function ContentEditor({ contentType, slug, fields, initialFrontm
                   type="date"
                   value={(frontmatter[field.name] as string) ?? ''}
                   onChange={(e) => setField(field.name, e.target.value)}
+                />
+              )}
+              {field.type === 'image' && (
+                <ImageUpload
+                  value={(frontmatter[field.name] as string) ?? ''}
+                  onChange={(v) => setField(field.name, v)}
+                  fieldName={field.name}
                 />
               )}
               {field.type === 'tags' && (
