@@ -1,8 +1,12 @@
+import AuthorAvatarStrip from './AuthorAvatarStrip';
+import type { AuthorInfo } from '@/lib/authors';
+
 export default function ArticleShell({
   title,
   description,
   meta,
   html,
+  authors,
 }: {
   title: string;
   description: string;
@@ -10,6 +14,7 @@ export default function ArticleShell({
   html: string;
   contentType?: string;
   slug?: string;
+  authors?: AuthorInfo[];
 }) {
   return (
     <article className="article">
@@ -20,7 +25,13 @@ export default function ArticleShell({
             <p className="article-description">{description}</p>
             {meta && <div className="article-meta">{meta}</div>}
           </div>
-          <div className="article-hero-accent" aria-hidden="true" />
+          <div className="article-hero-accent" aria-hidden="true">
+            {authors && authors.length > 0 && (
+              <div className="article-hero-authors">
+                <AuthorAvatarStrip authors={authors} />
+              </div>
+            )}
+          </div>
         </div>
       </header>
 

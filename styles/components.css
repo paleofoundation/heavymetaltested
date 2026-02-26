@@ -1168,6 +1168,304 @@ sup.cite-ref a:hover {
 }
 
 /* ----------------------------------------------------------------
+   AUTHOR AVATAR STRIP (in article hero)
+   ---------------------------------------------------------------- */
+
+.article-hero-authors {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 100%;
+  padding: var(--iu-space-xl) var(--iu-space-lg);
+}
+
+.author-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iu-space-sm);
+}
+
+.author-strip-label {
+  font-size: var(--iu-ts-12);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.author-strip-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iu-space-xs);
+}
+
+.author-strip-item {
+  display: flex;
+  align-items: center;
+  gap: var(--iu-space-sm);
+  text-decoration: none;
+  color: var(--iu-white);
+  padding: 0.25rem 0;
+  transition: opacity 0.15s ease;
+}
+.author-strip-item:hover {
+  opacity: 0.85;
+  text-decoration: none;
+  color: var(--iu-white);
+}
+
+.author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+}
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-avatar-initials {
+  font-size: var(--iu-ts-14);
+  font-weight: 700;
+  color: var(--iu-white);
+  line-height: 1;
+}
+.author-avatar-initials--lg {
+  font-size: var(--iu-ts-24);
+}
+
+.author-strip-info {
+  display: flex;
+  align-items: center;
+  gap: var(--iu-space-xs);
+}
+
+.author-strip-name {
+  font-size: var(--iu-ts-14);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.author-strip-orcid {
+  flex-shrink: 0;
+  display: inline-flex;
+}
+
+/* Hero accent becomes a flex container when it has authors */
+.article-hero-accent:has(.article-hero-authors) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 46.24em) {
+  .article-hero-accent {
+    display: none;
+  }
+  .article-hero-authors {
+    position: static;
+    padding: var(--iu-space-md) 0 0;
+  }
+  .author-strip {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .author-strip-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .article-hero-content:has(~ .article-hero-accent .article-hero-authors) {
+    max-width: 100%;
+  }
+}
+
+/* ----------------------------------------------------------------
+   AUTHOR PROFILE & INDEX PAGES
+   ---------------------------------------------------------------- */
+
+.author-profile-header {
+  display: flex;
+  align-items: center;
+  gap: var(--iu-space-lg);
+  margin-bottom: var(--iu-space-md);
+}
+
+.author-profile-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+}
+.author-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-profile-role {
+  font-size: var(--iu-ts-16);
+  color: rgba(255, 255, 255, 0.7);
+  margin: var(--iu-space-xxs) 0 var(--iu-space-xs);
+}
+
+.author-orcid-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--iu-space-xs);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: var(--iu-ts-14);
+  text-decoration: none;
+  font-family: var(--iu-font-mono, monospace);
+}
+.author-orcid-link:hover {
+  color: var(--iu-white);
+  text-decoration: underline;
+}
+
+.author-articles {
+  margin-top: var(--iu-space-3xl);
+}
+.author-articles h2 {
+  font-family: var(--iu-font-serif);
+  font-size: var(--iu-ts-24);
+  margin-bottom: var(--iu-space-lg);
+  padding-bottom: var(--iu-space-sm);
+  border-bottom: 3px solid var(--iu-crimson);
+}
+
+.author-articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--iu-space-xs);
+}
+
+.author-article-item {
+  display: flex;
+  align-items: baseline;
+  gap: var(--iu-space-md);
+  padding: var(--iu-space-md) var(--iu-space-lg);
+  background: var(--iu-white);
+  border: 1px solid var(--iu-border);
+  border-radius: var(--iu-radius-md);
+  text-decoration: none;
+  color: var(--iu-text);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.author-article-item:hover {
+  border-color: var(--iu-crimson);
+  box-shadow: var(--iu-shadow-sm);
+  text-decoration: none;
+  color: var(--iu-text);
+}
+
+.author-article-type {
+  font-size: var(--iu-ts-12);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--iu-crimson);
+  font-weight: 700;
+  flex-shrink: 0;
+  min-width: 5rem;
+}
+
+.author-article-title {
+  font-weight: 600;
+  flex: 1;
+}
+
+.author-article-date {
+  font-size: var(--iu-ts-14);
+  color: var(--iu-text-muted);
+  flex-shrink: 0;
+}
+
+/* Author index grid */
+.author-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--iu-space-lg);
+}
+
+.author-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: var(--iu-space-xl);
+  background: var(--iu-white);
+  border: 1px solid var(--iu-border);
+  border-radius: var(--iu-radius-lg);
+  text-decoration: none;
+  color: var(--iu-text);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.author-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--iu-shadow-md);
+  border-color: var(--iu-crimson);
+  text-decoration: none;
+  color: var(--iu-text);
+}
+
+.author-card-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--iu-crimson);
+  margin-bottom: var(--iu-space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--iu-bg-light);
+}
+.author-card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-card h3 {
+  font-family: var(--iu-font-serif);
+  font-size: var(--iu-ts-20);
+  margin-bottom: var(--iu-space-xxs);
+}
+
+.author-card-role {
+  font-size: var(--iu-ts-14);
+  color: var(--iu-crimson);
+  font-weight: 600;
+  margin-bottom: var(--iu-space-sm);
+}
+
+.author-card-bio {
+  font-size: var(--iu-ts-14);
+  color: var(--iu-text-secondary);
+  line-height: var(--iu-lh-loose);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ----------------------------------------------------------------
    ADMIN TOOLBAR & LOGIN FAB
    ---------------------------------------------------------------- */
 

@@ -14,6 +14,7 @@ function getEditLink(pathname: string): string | null {
     { regex: /^\/playbooks\/([^/]+)$/, type: 'playbooks' },
     { regex: /^\/testing\/([^/]+)$/, type: 'primers' },
     { regex: /^\/mechanisms\/([^/]+)$/, type: 'mechanisms' },
+    { regex: /^\/authors\/([^/]+)$/, type: 'authors' },
   ];
   for (const { regex, type } of contentPatterns) {
     const match = pathname.match(regex);

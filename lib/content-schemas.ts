@@ -22,6 +22,7 @@ const shared: FieldDef[] = [
   { name: 'title', label: 'Title', type: 'text', required: true },
   { name: 'slug', label: 'Slug', type: 'text', required: true },
   { name: 'description', label: 'Description', type: 'textarea', required: true },
+  { name: 'authors', label: 'Authors (slugs)', type: 'tags' },
   { name: 'references', label: 'References', type: 'tags' },
 ];
 
@@ -54,6 +55,20 @@ export const contentSchemas: Record<string, ContentTypeSchema> = {
       { name: 'card2LinkUrl', label: 'Bottom Card 2 — Link URL', type: 'text' },
       { name: 'card3Title', label: 'Bottom Card 3 — Title', type: 'text' },
       { name: 'card3Description', label: 'Bottom Card 3 — Description', type: 'textarea' },
+    ],
+  },
+  authors: {
+    label: 'Author',
+    labelPlural: 'Authors',
+    slugPrefix: '/authors/',
+    fields: [
+      { name: 'title', label: 'Full Name', type: 'text', required: true },
+      { name: 'slug', label: 'Slug', type: 'text', required: true },
+      { name: 'description', label: 'Short Bio', type: 'textarea', required: true },
+      { name: 'role', label: 'Role', type: 'text' },
+      { name: 'avatar', label: 'Avatar Path', type: 'text' },
+      { name: 'orcid', label: 'ORCID iD', type: 'text' },
+      { name: 'updatedAt', label: 'Updated At', type: 'date' },
     ],
   },
   metals: {
