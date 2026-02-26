@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getAll } from '@/lib/content';
 import { categories, metals } from '@/lib/taxonomy';
+import FramedImage from '@/components/FramedImage';
 
 type News = { title: string; slug: string; description: string; publishedAt: string };
 
@@ -19,8 +20,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-media">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/hero.png" alt="Heavy metal facts — reporting on heavy metals in food, water, supplements, and more" className="hero-image" />
+            <FramedImage src="/images/hero.png" alt="Heavy metal facts — reporting on heavy metals in food, water, supplements, and more" className="hero-image" />
           </div>
         </div>
       </section>
