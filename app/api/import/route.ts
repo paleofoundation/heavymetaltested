@@ -3,6 +3,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import mammoth from 'mammoth';
 import { matchHeadingToSection, metalSections } from '@/lib/metal-sections';
+import { isGitHubEnabled, writeBinaryToGitHub } from '@/lib/github';
+import fs from 'node:fs';
+import path from 'node:path';
 
 function htmlToMarkdown(html: string): string {
   let md = html;
@@ -47,6 +50,9 @@ function htmlToMarkdown(html: string): string {
 
   md = md.replace(/<br\s*\/?>/gi, '\n');
   md = md.replace(/<p[^>]*>([\s\S]*?)<\/p>/gi, '$1\n\n');
+
+  md = md.replace(/<img[^>]+src="([^"]+)"[^>]*alt="([^"]*)"[^>]*\/?>/gi, '![$2]($1)\n\n');
+  md = md.replace(/<img[^>]+src="([^"]+)"[^>]*\/?>/gi, '![]($1)\n\n');
 
   md = md.replace(/<[^>]+>/g, '');
 
@@ -168,8 +174,41 @@ export async function POST(req: NextRequest) {
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
+  const importId = Date.now();
+  let imageCounter = 0;
 
-  const { value: html } = await mammoth.convertToHtml({ buffer });
+  const { value: html } = await mammoth.convertToHtml(
+    { buffer },
+    {
+      convertImage: mammoth.images.imgElement(async (image) => {
+        imageCounter++;
+        const imgBuffer = await image.read();
+        const extMap: Record<string, string> = {
+          'image/png': 'png',
+          'image/jpeg': 'jpg',
+          'image/gif': 'gif',
+          'image/webp': 'webp',
+          'image/svg+xml': 'svg',
+        };
+        const ext = extMap[image.contentType] || 'png';
+        const filename = `import-${importId}-${imageCounter}.${ext}`;
+        const repoPath = `public/images/imports/${filename}`;
+        const publicPath = `/images/imports/${filename}`;
+        const base64 = Buffer.from(imgBuffer).toString('base64');
+
+        if (isGitHubEnabled()) {
+          await writeBinaryToGitHub(repoPath, base64, `Import image ${filename}`);
+        } else {
+          const fullPath = path.join(process.cwd(), repoPath);
+          fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+          fs.writeFileSync(fullPath, imgBuffer);
+        }
+
+        return { src: publicPath };
+      }),
+    },
+  );
+
   const markdown = htmlToMarkdown(html);
   const parsed = parseMarkdownIntoSections(markdown);
 
