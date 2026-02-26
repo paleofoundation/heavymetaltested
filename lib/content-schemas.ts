@@ -65,7 +65,8 @@ export const contentSchemas: Record<string, ContentTypeSchema> = {
     fields: [
       { name: 'title', label: 'Full Name', type: 'text', required: true },
       { name: 'slug', label: 'Slug', type: 'text', required: true },
-      { name: 'description', label: 'Short Bio', type: 'textarea', required: true },
+      { name: 'description', label: 'Full Bio Excerpt', type: 'textarea', required: true },
+      { name: 'shortBio', label: 'Tooltip Bio (1 sentence)', type: 'text' },
       { name: 'role', label: 'Role', type: 'text' },
       { name: 'avatar', label: 'Avatar Photo', type: 'image' },
       { name: 'orcid', label: 'ORCID iD', type: 'text' },

@@ -11,6 +11,7 @@ export interface AuthorInfo {
   avatar?: string;
   orcid?: string;
   description?: string;
+  shortBio?: string;
 }
 
 export function getAuthorBySlug(slug: string): AuthorInfo | null {
@@ -25,6 +26,7 @@ export function getAuthorBySlug(slug: string): AuthorInfo | null {
     avatar: data.avatar,
     orcid: data.orcid,
     description: data.description,
+    shortBio: data.shortBio,
   };
 }
 

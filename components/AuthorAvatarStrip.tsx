@@ -55,8 +55,8 @@ export default function AuthorAvatarStrip({ authors }: { authors: AuthorInfo[] }
                 <OrcidIcon />
               </a>
             )}
-            {author.description && (
-              <span className="author-tooltip">{author.description}</span>
+            {(author.shortBio || author.description) && (
+              <span className="author-tooltip">{author.shortBio || author.description}</span>
             )}
           </div>
         ))}

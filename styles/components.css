@@ -1308,11 +1308,11 @@ sup.cite-ref a:hover {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 10;
   margin-top: var(--iu-space-xs);
   padding: var(--iu-space-sm) var(--iu-space-md);
-  max-width: 300px;
+  width: 280px;
   background: var(--iu-text);
   color: rgba(255, 255, 255, 0.9);
   font-size: var(--iu-ts-12);
@@ -1320,9 +1320,12 @@ sup.cite-ref a:hover {
   border-radius: var(--iu-radius-md);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   pointer-events: none;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .author-strip-item:hover .author-tooltip {
-  display: block;
+  display: -webkit-box;
 }
 
 /* ----------------------------------------------------------------
