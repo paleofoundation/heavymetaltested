@@ -993,6 +993,22 @@ a.card:hover p {
   margin: 0;
 }
 
+.article-keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--iu-space-xs);
+  margin-top: var(--iu-space-md);
+}
+.article-keyword {
+  font-size: var(--iu-ts-12);
+  padding: 0.2em 0.7em;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+  white-space: nowrap;
+}
+
 .article-hero-accent {
   position: absolute;
   top: 0;

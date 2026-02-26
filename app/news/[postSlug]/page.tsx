@@ -1,10 +1,21 @@
+import type { Metadata } from 'next';
 import ArticleShell from '@/components/ArticleShell';
 import { getBySlug, getSlugs } from '@/lib/content';
 import { resolveAuthors } from '@/lib/authors';
 
-type Post = { title: string; slug: string; description: string; publishedAt: string; updatedAt?: string; html: string; references: string[]; authors?: string[] };
+type Post = { title: string; slug: string; description: string; publishedAt: string; updatedAt?: string; html: string; references: string[]; authors?: string[]; keywords?: string[] };
 
 export function generateStaticParams() { return getSlugs('news').map((postSlug) => ({ postSlug })); }
+
+export async function generateMetadata({ params }: { params: { postSlug: string } }): Promise<Metadata> {
+  const page = await getBySlug<Post>('news', params.postSlug);
+  return {
+    title: page.title,
+    description: page.description,
+    keywords: page.keywords?.join(', '),
+    openGraph: { title: page.title, description: page.description, type: 'article' },
+  };
+}
 
 export default async function NewsPostPage({ params }: { params: { postSlug: string } }) {
   const page = await getBySlug<Post>('news', params.postSlug);
@@ -18,6 +29,7 @@ export default async function NewsPostPage({ params }: { params: { postSlug: str
       contentType="news"
       slug={params.postSlug}
       authors={authors}
+      keywords={page.keywords}
     />
   );
 }

@@ -23,6 +23,7 @@ const shared: FieldDef[] = [
   { name: 'slug', label: 'Slug', type: 'text', required: true },
   { name: 'description', label: 'Description', type: 'textarea', required: true },
   { name: 'authors', label: 'Authors', type: 'authorPicker' },
+  { name: 'keywords', label: 'Keywords', type: 'tags' },
   { name: 'references', label: 'References', type: 'tags' },
 ];
 
