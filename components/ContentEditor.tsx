@@ -91,16 +91,31 @@ export default function ContentEditor({ contentType, slug, fields, initialFrontm
         body: JSON.stringify({ frontmatter, body: finalBody }),
       });
       if (!res.ok) {
-        const data = await res.json();
-        setMessage(`Error: ${data.error || 'Save failed'}`);
+        let errMsg = `Save failed (${res.status})`;
+        try {
+          const data = await res.json();
+          if (data.error) errMsg = data.error;
+        } catch {
+          const text = await res.text().catch(() => '');
+          if (text.includes('EROFS') || text.includes('read-only')) {
+            errMsg = 'Server filesystem is read-only. Content editing requires a local dev server, not the production Vercel deployment.';
+          }
+        }
+        setMessage(`Error: ${errMsg}`);
       } else {
-        setMessage('Saved successfully.');
+        const data = await res.json().catch(() => ({}));
+        if (data.via === 'github') {
+          setMessage('Saved — committed to GitHub. Site will redeploy in ~30 seconds.');
+        } else {
+          setMessage('Saved successfully.');
+        }
         if (isNew && targetSlug) {
           router.push(`/admin/edit/${contentType}/${targetSlug}`);
         }
       }
-    } catch {
-      setMessage('Error: Network request failed.');
+    } catch (err) {
+      const detail = err instanceof Error ? err.message : String(err);
+      setMessage(`Error: ${detail}`);
     } finally {
       setSaving(false);
     }

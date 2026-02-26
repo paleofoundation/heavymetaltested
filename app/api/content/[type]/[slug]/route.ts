@@ -4,11 +4,16 @@ import { authOptions } from '@/lib/auth';
 import fs from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
+import { isGitHubEnabled, writeFileToGitHub, deleteFileFromGitHub } from '@/lib/github';
 
 const VALID_TYPES = ['metals', 'news', 'categories', 'playbooks', 'primers', 'mechanisms'];
 
 function contentPath(type: string, slug: string) {
   return path.join(process.cwd(), 'content', type, `${slug}.mdx`);
+}
+
+function repoPath(type: string, slug: string) {
+  return `content/${type}/${slug}.mdx`;
 }
 
 export async function GET(
@@ -40,14 +45,33 @@ export async function PUT(
   if (!VALID_TYPES.includes(type)) {
     return NextResponse.json({ error: 'Invalid type' }, { status: 400 });
   }
+
+  const { frontmatter, body } = await req.json();
+  const fileContent = matter.stringify(body ?? '', frontmatter ?? {});
+
+  if (isGitHubEnabled()) {
+    const result = await writeFileToGitHub(
+      repoPath(type, slug),
+      fileContent,
+      `Update ${type}/${slug} via admin editor`,
+    );
+    if (!result.ok) {
+      return NextResponse.json({ error: result.error }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, via: 'github' });
+  }
+
   const filePath = contentPath(type, slug);
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: 'Not found' }, { status: 404 });
   }
-  const { frontmatter, body } = await req.json();
-  const fileContent = matter.stringify(body ?? '', frontmatter ?? {});
-  fs.writeFileSync(filePath, fileContent, 'utf8');
-  return NextResponse.json({ ok: true });
+  try {
+    fs.writeFileSync(filePath, fileContent, 'utf8');
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: `Write failed: ${msg}` }, { status: 500 });
+  }
+  return NextResponse.json({ ok: true, via: 'filesystem' });
 }
 
 export async function DELETE(
@@ -62,10 +86,27 @@ export async function DELETE(
   if (!VALID_TYPES.includes(type)) {
     return NextResponse.json({ error: 'Invalid type' }, { status: 400 });
   }
+
+  if (isGitHubEnabled()) {
+    const result = await deleteFileFromGitHub(
+      repoPath(type, slug),
+      `Delete ${type}/${slug} via admin editor`,
+    );
+    if (!result.ok) {
+      return NextResponse.json({ error: result.error }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true, via: 'github' });
+  }
+
   const filePath = contentPath(type, slug);
   if (!fs.existsSync(filePath)) {
     return NextResponse.json({ error: 'Not found' }, { status: 404 });
   }
-  fs.unlinkSync(filePath);
-  return NextResponse.json({ ok: true });
+  try {
+    fs.unlinkSync(filePath);
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    return NextResponse.json({ error: `Delete failed: ${msg}` }, { status: 500 });
+  }
+  return NextResponse.json({ ok: true, via: 'filesystem' });
 }
