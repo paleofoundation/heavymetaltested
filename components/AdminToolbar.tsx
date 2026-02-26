@@ -30,58 +30,37 @@ export default function AdminToolbar() {
 
   if (!session) {
     return (
-      <div style={{
-        position: 'fixed', bottom: 'var(--iu-space-md)', right: 'var(--iu-space-md)',
-        zIndex: 50,
-      }}>
-        <Link
-          href="/admin/login"
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 'var(--iu-space-xs)',
-            padding: '0.4rem 0.9rem',
-            background: 'rgba(36,49,66,0.7)', color: 'rgba(255,255,255,0.7)',
-            borderRadius: 'var(--iu-radius-md)', fontSize: 'var(--iu-ts-12)',
-            textDecoration: 'none', backdropFilter: 'blur(4px)',
-            transition: 'opacity 0.15s ease', opacity: 0.4,
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = '1')}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = '0.4')}
-        >
-          Admin
-        </Link>
-      </div>
+      <Link
+        href="/admin/login"
+        className="admin-login-fab"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v2h20v-2c0-3.3-6.7-5-10-5z" fill="currentColor"/>
+        </svg>
+        Log In
+      </Link>
     );
   }
 
   const editLink = getEditLink(pathname);
 
   return (
-    <div style={{
-      position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50,
-      background: 'var(--iu-text)', color: 'var(--iu-white)',
-      padding: 'var(--iu-space-xs) var(--iu-space-md)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'var(--iu-space-md)',
-      fontSize: 'var(--iu-ts-14)', boxShadow: '0 -2px 8px rgba(0,0,0,0.2)',
-    }}>
-      <Link href="/admin" style={{ color: 'var(--iu-white)', textDecoration: 'none', fontWeight: 600 }}>
+    <div className="admin-toolbar">
+      <Link href="/admin" className="admin-toolbar-link">
         Dashboard
       </Link>
-      <span style={{ opacity: 0.3 }}>|</span>
+      <span className="admin-toolbar-sep">|</span>
       {editLink ? (
-        <Link href={editLink} style={{ color: '#fbbf24', textDecoration: 'none', fontWeight: 600 }}>
+        <Link href={editLink} className="admin-toolbar-link admin-toolbar-edit">
           Edit This Page
         </Link>
       ) : (
-        <span style={{ opacity: 0.5 }}>No editable content on this page</span>
+        <span className="admin-toolbar-muted">This page is not directly editable</span>
       )}
-      <span style={{ opacity: 0.3 }}>|</span>
+      <span className="admin-toolbar-sep">|</span>
       <button
         onClick={() => signOut({ callbackUrl: '/' })}
-        style={{
-          background: 'none', border: 'none', color: 'rgba(255,255,255,0.6)',
-          cursor: 'pointer', fontSize: 'var(--iu-ts-14)', fontFamily: 'inherit',
-          padding: 0, textDecoration: 'underline',
-        }}
+        className="admin-toolbar-signout"
       >
         Sign Out
       </button>

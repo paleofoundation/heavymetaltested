@@ -1167,6 +1167,86 @@ sup.cite-ref a:hover {
   margin: var(--iu-space-xl) 0;
 }
 
+/* ----------------------------------------------------------------
+   ADMIN TOOLBAR & LOGIN FAB
+   ---------------------------------------------------------------- */
+
+.admin-login-fab {
+  position: fixed;
+  bottom: var(--iu-space-lg);
+  right: var(--iu-space-lg);
+  z-index: 50;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--iu-space-xs);
+  padding: 0.6rem 1.2rem;
+  background: var(--iu-crimson);
+  color: var(--iu-white);
+  border-radius: var(--iu-radius-md);
+  font-size: var(--iu-ts-14);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--iu-shadow-md);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.admin-login-fab:hover {
+  background: var(--iu-crimson-dark);
+  color: var(--iu-white);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.admin-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: var(--iu-text);
+  color: var(--iu-white);
+  padding: var(--iu-space-sm) var(--iu-space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--iu-space-md);
+  font-size: var(--iu-ts-14);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+}
+.admin-toolbar-link {
+  color: var(--iu-white);
+  text-decoration: none;
+  font-weight: 600;
+}
+.admin-toolbar-link:hover {
+  color: var(--iu-white);
+  text-decoration: underline;
+}
+.admin-toolbar-edit {
+  color: #fbbf24;
+}
+.admin-toolbar-edit:hover {
+  color: #fbbf24;
+}
+.admin-toolbar-sep {
+  opacity: 0.25;
+}
+.admin-toolbar-muted {
+  opacity: 0.5;
+}
+.admin-toolbar-signout {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  font-size: var(--iu-ts-14);
+  font-family: inherit;
+  padding: 0;
+  text-decoration: underline;
+}
+.admin-toolbar-signout:hover {
+  color: var(--iu-white);
+}
+
 /* Reference list target highlight */
 li[id^="ref-"]:target {
   background: #fff3cd;
