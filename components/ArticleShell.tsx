@@ -24,14 +24,9 @@ export default function ArticleShell({
             <h1 className="article-title">{title}</h1>
             <p className="article-description">{description}</p>
             {meta && <div className="article-meta">{meta}</div>}
+            {authors && authors.length > 0 && <AuthorAvatarStrip authors={authors} />}
           </div>
-          <div className="article-hero-accent" aria-hidden="true">
-            {authors && authors.length > 0 && (
-              <div className="article-hero-authors">
-                <AuthorAvatarStrip authors={authors} />
-              </div>
-            )}
-          </div>
+          <div className="article-hero-accent" aria-hidden="true" />
         </div>
       </header>
 

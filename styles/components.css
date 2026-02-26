@@ -1171,20 +1171,11 @@ sup.cite-ref a:hover {
    AUTHOR AVATAR STRIP (in article hero)
    ---------------------------------------------------------------- */
 
-.article-hero-authors {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  height: 100%;
-  padding: var(--iu-space-xl) var(--iu-space-lg);
-}
-
 .author-strip {
   display: flex;
   flex-direction: column;
   gap: var(--iu-space-sm);
+  margin-top: var(--iu-space-lg);
 }
 
 .author-strip-label {
@@ -1202,15 +1193,23 @@ sup.cite-ref a:hover {
 }
 
 .author-strip-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--iu-space-sm);
+  color: var(--iu-white);
+  padding: 0.25rem 0;
+}
+
+.author-strip-link {
   display: flex;
   align-items: center;
   gap: var(--iu-space-sm);
   text-decoration: none;
   color: var(--iu-white);
-  padding: 0.25rem 0;
   transition: opacity 0.15s ease;
 }
-.author-strip-item:hover {
+.author-strip-link:hover {
   opacity: 0.85;
   text-decoration: none;
   color: var(--iu-white);
@@ -1244,12 +1243,6 @@ sup.cite-ref a:hover {
   font-size: var(--iu-ts-24);
 }
 
-.author-strip-info {
-  display: flex;
-  align-items: center;
-  gap: var(--iu-space-xs);
-}
-
 .author-strip-name {
   font-size: var(--iu-ts-14);
   font-weight: 600;
@@ -1259,35 +1252,33 @@ sup.cite-ref a:hover {
 .author-strip-orcid {
   flex-shrink: 0;
   display: inline-flex;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+.author-strip-orcid:hover {
+  opacity: 1;
 }
 
-/* Hero accent becomes a flex container when it has authors */
-.article-hero-accent:has(.article-hero-authors) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Hover tooltip showing author bio excerpt */
+.author-tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+  margin-top: var(--iu-space-xs);
+  padding: var(--iu-space-sm) var(--iu-space-md);
+  max-width: 300px;
+  background: var(--iu-text);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--iu-ts-12);
+  line-height: var(--iu-lh-loose);
+  border-radius: var(--iu-radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
-
-@media (max-width: 46.24em) {
-  .article-hero-accent {
-    display: none;
-  }
-  .article-hero-authors {
-    position: static;
-    padding: var(--iu-space-md) 0 0;
-  }
-  .author-strip {
-    flex-direction: row;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .author-strip-list {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-  .article-hero-content:has(~ .article-hero-accent .article-hero-authors) {
-    max-width: 100%;
-  }
+.author-strip-item:hover .author-tooltip {
+  display: block;
 }
 
 /* ----------------------------------------------------------------

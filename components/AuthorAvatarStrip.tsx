@@ -32,28 +32,33 @@ export default function AuthorAvatarStrip({ authors }: { authors: AuthorInfo[] }
       <span className="author-strip-label">Researched by</span>
       <div className="author-strip-list">
         {authors.map((author) => (
-          <Link
-            key={author.slug}
-            href={`/authors/${author.slug}`}
-            className="author-strip-item"
-          >
-            <span className="author-avatar">
-              {author.avatar ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={author.avatar} alt="" />
-              ) : (
-                <AuthorInitials name={author.name} />
-              )}
-            </span>
-            <span className="author-strip-info">
+          <div key={author.slug} className="author-strip-item">
+            <Link href={`/authors/${author.slug}`} className="author-strip-link">
+              <span className="author-avatar">
+                {author.avatar ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={author.avatar} alt="" />
+                ) : (
+                  <AuthorInitials name={author.name} />
+                )}
+              </span>
               <span className="author-strip-name">{author.name}</span>
-              {author.orcid && (
-                <span className="author-strip-orcid">
-                  <OrcidIcon />
-                </span>
-              )}
-            </span>
-          </Link>
+            </Link>
+            {author.orcid && (
+              <a
+                href={`https://orcid.org/${author.orcid}`}
+                target="_blank"
+                rel="noopener"
+                className="author-strip-orcid"
+                aria-label={`ORCID profile for ${author.name}`}
+              >
+                <OrcidIcon />
+              </a>
+            )}
+            {author.description && (
+              <span className="author-tooltip">{author.description}</span>
+            )}
+          </div>
         ))}
       </div>
     </div>
