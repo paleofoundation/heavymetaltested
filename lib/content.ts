@@ -16,9 +16,32 @@ export type BaseFrontmatter = {
   references: string[];
 };
 
+function addRefIdsToOrderedList(refHtml: string): string {
+  let refNum = 0;
+  return refHtml.replace(/<li>/g, () => {
+    refNum++;
+    return `<li id="ref-${refNum}">`;
+  });
+}
+
 export async function markdownToHtml(markdown: string) {
   const processedContent = await remark().use(gfm).use(html).process(markdown);
-  return processedContent.toString();
+  let result = processedContent.toString();
+
+  const refHeadingIndex = result.search(/<h2[^>]*>\s*References\s*<\/h2>/i);
+  if (refHeadingIndex >= 0) {
+    const bodyPart = result.slice(0, refHeadingIndex);
+    const refsPart = result.slice(refHeadingIndex);
+
+    const linkedBody = bodyPart.replace(
+      /\[(\d{1,3})\]/g,
+      '<sup class="cite-ref"><a href="#ref-$1">$1</a></sup>',
+    );
+    const linkedRefs = addRefIdsToOrderedList(refsPart);
+    result = linkedBody + linkedRefs;
+  }
+
+  return result;
 }
 
 export function getSlugs(type: string) {

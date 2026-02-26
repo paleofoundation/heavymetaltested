@@ -928,3 +928,29 @@
   object-fit: contain;
   margin-bottom: var(--iu-space-sm);
 }
+
+/* Inline citation superscripts */
+sup.cite-ref {
+  font-size: 0.7em;
+  line-height: 0;
+  vertical-align: super;
+}
+sup.cite-ref a {
+  color: var(--iu-crimson);
+  text-decoration: none;
+  padding: 0 1px;
+  font-weight: 600;
+}
+sup.cite-ref a:hover {
+  text-decoration: underline;
+}
+
+/* Reference list target highlight */
+li[id^="ref-"]:target {
+  background: #fff3cd;
+  border-radius: var(--iu-radius-sm);
+  transition: background 0.3s ease;
+}
+li[id^="ref-"] {
+  scroll-margin-top: 2rem;
+}
