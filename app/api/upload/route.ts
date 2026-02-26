@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { isGitHubEnabled, writeBinaryToGitHub } from '@/lib/github';
-import path from 'node:path';
-import fs from 'node:fs';
 
 const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
 const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
@@ -21,7 +19,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'No file provided' }, { status: 400 });
   }
 
-  const ext = path.extname(file.name).toLowerCase();
+  const ext = file.name.slice(file.name.lastIndexOf('.')).toLowerCase();
   if (!ALLOWED_EXTENSIONS.includes(ext)) {
     return NextResponse.json(
       { error: `File type ${ext} not allowed. Use: ${ALLOWED_EXTENSIONS.join(', ')}` },
@@ -49,8 +47,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ path: publicPath, via: 'github' });
   }
 
-  const fullPath = path.join(process.cwd(), repoPath);
-  fs.mkdirSync(path.dirname(fullPath), { recursive: true });
-  fs.writeFileSync(fullPath, Buffer.from(arrayBuf));
+  // Local dev fallback: write via dynamic fs import to avoid trace bloat
+  const { writeFileSync, mkdirSync } = await import('node:fs');
+  const { join, dirname } = await import('node:path');
+  const fullPath = join(process.cwd(), repoPath);
+  mkdirSync(dirname(fullPath), { recursive: true });
+  writeFileSync(fullPath, Buffer.from(arrayBuf));
   return NextResponse.json({ path: publicPath, via: 'local' });
 }
