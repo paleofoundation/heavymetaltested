@@ -1,7 +1,7 @@
 import type { SectionDef } from './metal-sections';
 import { metalSections } from './metal-sections';
 
-export type FieldType = 'text' | 'textarea' | 'date' | 'tags' | 'image';
+export type FieldType = 'text' | 'textarea' | 'date' | 'tags' | 'image' | 'authorPicker';
 
 export interface FieldDef {
   name: string;
@@ -22,7 +22,7 @@ const shared: FieldDef[] = [
   { name: 'title', label: 'Title', type: 'text', required: true },
   { name: 'slug', label: 'Slug', type: 'text', required: true },
   { name: 'description', label: 'Description', type: 'textarea', required: true },
-  { name: 'authors', label: 'Authors (slugs)', type: 'tags' },
+  { name: 'authors', label: 'Authors', type: 'authorPicker' },
   { name: 'references', label: 'References', type: 'tags' },
 ];
 

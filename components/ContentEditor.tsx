@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { FieldDef } from '@/lib/content-schemas';
@@ -81,6 +81,97 @@ function ImageUpload({ value, onChange, fieldName }: { value: string; onChange: 
         />
       </div>
       {error && <span style={{ color: '#b91c1c', fontSize: 'var(--iu-ts-12)' }}>{error}</span>}
+    </div>
+  );
+}
+
+interface AuthorOption {
+  slug: string;
+  title: string;
+  avatar: string | null;
+  role: string | null;
+}
+
+function AuthorPicker({ value, onChange }: { value: string[]; onChange: (v: string[]) => void }) {
+  const [authors, setAuthors] = useState<AuthorOption[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/content/authors')
+      .then((r) => r.json())
+      .then((data) => setAuthors(data.items ?? []))
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
+
+  function toggle(slug: string) {
+    if (value.includes(slug)) {
+      onChange(value.filter((s) => s !== slug));
+    } else {
+      onChange([...value, slug]);
+    }
+  }
+
+  if (loading) {
+    return <span style={{ fontSize: 'var(--iu-ts-14)', color: 'var(--iu-text-muted)' }}>Loading authors...</span>;
+  }
+
+  if (authors.length === 0) {
+    return <span style={{ fontSize: 'var(--iu-ts-14)', color: 'var(--iu-text-muted)' }}>No authors found. Create one first.</span>;
+  }
+
+  const selected = authors.filter((a) => value.includes(a.slug));
+  const unselected = authors.filter((a) => !value.includes(a.slug));
+  const sorted = [...selected, ...unselected];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--iu-space-xs)' }}>
+      {sorted.map((author) => {
+        const checked = value.includes(author.slug);
+        return (
+          <label
+            key={author.slug}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 'var(--iu-space-sm)',
+              padding: '6px 10px',
+              borderRadius: 'var(--iu-radius-md)',
+              cursor: 'pointer',
+              background: checked ? '#f0fdf4' : 'transparent',
+              border: checked ? '1px solid #86efac' : '1px solid transparent',
+              transition: 'all 0.15s ease',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={() => toggle(author.slug)}
+              style={{ accentColor: 'var(--iu-crimson)', width: 16, height: 16, flexShrink: 0 }}
+            />
+            <span style={{
+              width: 32, height: 32, borderRadius: '50%', overflow: 'hidden', flexShrink: 0,
+              background: 'var(--iu-bg-light)', display: 'flex', alignItems: 'center', justifyContent: 'center',
+              border: '1px solid var(--iu-border)', fontSize: 'var(--iu-ts-12)', fontWeight: 600, color: 'var(--iu-text-muted)',
+            }}>
+              {author.avatar ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={author.avatar} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                author.title.split(' ').map((w) => w[0]).slice(0, 2).join('').toUpperCase()
+              )}
+            </span>
+            <span style={{ fontSize: 'var(--iu-ts-14)', fontWeight: checked ? 600 : 400 }}>
+              {author.title}
+            </span>
+            {author.role && (
+              <span style={{ fontSize: 'var(--iu-ts-12)', color: 'var(--iu-text-muted)', marginLeft: 'auto' }}>
+                {author.role}
+              </span>
+            )}
+          </label>
+        );
+      })}
     </div>
   );
 }
@@ -244,6 +335,12 @@ export default function ContentEditor({ contentType, slug, fields, initialFrontm
                   value={(frontmatter[field.name] as string) ?? ''}
                   onChange={(v) => setField(field.name, v)}
                   fieldName={field.name}
+                />
+              )}
+              {field.type === 'authorPicker' && (
+                <AuthorPicker
+                  value={Array.isArray(frontmatter[field.name]) ? (frontmatter[field.name] as string[]) : []}
+                  onChange={(v) => setField(field.name, v)}
                 />
               )}
               {field.type === 'tags' && (

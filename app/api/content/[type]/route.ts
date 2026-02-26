@@ -8,6 +8,36 @@ import { isGitHubEnabled, writeFileToGitHub, fileExistsOnGitHub } from '@/lib/gi
 
 const VALID_TYPES = ['pages', 'authors', 'metals', 'news', 'categories', 'playbooks', 'primers', 'mechanisms'];
 
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: { type: string } },
+) {
+  const { type } = params;
+  if (!VALID_TYPES.includes(type)) {
+    return NextResponse.json({ error: 'Invalid type' }, { status: 400 });
+  }
+
+  const dir = path.join(process.cwd(), 'content', type);
+  if (!fs.existsSync(dir)) {
+    return NextResponse.json({ items: [] });
+  }
+
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith('.mdx'));
+  const items = files.map((file) => {
+    const raw = fs.readFileSync(path.join(dir, file), 'utf8');
+    const { data } = matter(raw);
+    return {
+      slug: data.slug || file.replace(/\.mdx$/, ''),
+      title: data.title || file.replace(/\.mdx$/, ''),
+      avatar: data.avatar || null,
+      role: data.role || null,
+      description: data.description || null,
+    };
+  });
+
+  return NextResponse.json({ items });
+}
+
 export async function POST(
   req: NextRequest,
   { params }: { params: { type: string } },
