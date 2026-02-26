@@ -1,60 +1,89 @@
 import Link from 'next/link';
-import { getAll } from '@/lib/content';
+import { getAll, getBySlug } from '@/lib/content';
 import { categories, metals } from '@/lib/taxonomy';
 import FramedImage from '@/components/FramedImage';
 
 type News = { title: string; slug: string; description: string; publishedAt: string };
 
-export default function HomePage() {
+type HomeFields = {
+  title: string;
+  slug: string;
+  description: string;
+  heroHeadline: string;
+  heroDescription: string;
+  heroCtaText: string;
+  heroCtaUrl: string;
+  heroImageAlt: string;
+  big8Heading: string;
+  big8CardDescription: string;
+  categoriesHeading: string;
+  categoriesCardDescription: string;
+  pullQuote: string;
+  latestHeading: string;
+  card1Title: string;
+  card1Description: string;
+  card1LinkText: string;
+  card1LinkUrl: string;
+  card2Title: string;
+  card2Description: string;
+  card2LinkText: string;
+  card2LinkUrl: string;
+  card3Title: string;
+  card3Description: string;
+  references: string[];
+};
+
+export default async function HomePage() {
   const latest = getAll<News>('news').slice(0, 3);
+  const page = await getBySlug<HomeFields>('pages', 'home');
 
   return (
     <>
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-text">
-            <h1>Evidence-first reporting on contaminant heavy metals.</h1>
-            <p>Heavy Metal Facts tracks the Big 8 metals across foods, water, supplements, and materials using standards-minded journalism.</p>
+            <h1>{page.heroHeadline}</h1>
+            <p>{page.heroDescription}</p>
             <div className="btn-row">
-              <Link className="btn btn-primary" href="/news">Read latest briefing</Link>
+              <Link className="btn btn-primary" href={page.heroCtaUrl}>{page.heroCtaText}</Link>
             </div>
           </div>
           <div className="hero-media">
-            <FramedImage src="/images/hero.png" alt="Heavy metal facts — reporting on heavy metals in food, water, supplements, and more" className="hero-image" />
+            <FramedImage src="/images/hero.png" alt={page.heroImageAlt} className="hero-image" />
           </div>
         </div>
       </section>
 
       <section className="section container">
-        <h2>The Big 8</h2>
+        <h2>{page.big8Heading}</h2>
         <div className="grid-3">
           {metals.slice(0, 6).map((m) => (
             <Link className="card" href={`/metals/${m.key}`} key={m.key}>
               <h3>{m.label}</h3>
-              <p>Pathways, concerns, testing context, and practical reduction strategies.</p>
+              <p>{page.big8CardDescription}</p>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="section container">
-        <h2>Where it hides</h2>
+        <h2>{page.categoriesHeading}</h2>
         <div className="grid-3">
           {categories.slice(0, 6).map((c) => (
             <Link className="card" href={`/categories/${c.key}`} key={c.key}>
               <h3>{c.label}</h3>
-              <p>How concentration, uptake, and processing shape risk patterns.</p>
+              <p>{page.categoriesCardDescription}</p>
             </Link>
           ))}
         </div>
       </section>
 
       <section className="section container">
-        <div className="quote">&ldquo;Limits only work when sampling, methods, and interpretation are specified clearly enough for labs to reproduce.&rdquo;</div>
+        <div className="quote">&ldquo;{page.pullQuote}&rdquo;</div>
       </section>
 
       <section className="section container">
-        <h2>Latest stories</h2>
+        <h2>{page.latestHeading}</h2>
         <div className="news-grid">
           {latest.map((post) => (
             <article key={post.slug} className="news-card">
@@ -71,23 +100,21 @@ export default function HomePage() {
 
       <section className="section container grid-3">
         <div className="card">
-          <h3>How limits and testing work</h3>
-          <p>Learn why feasibility, toxicology thresholds, and method LOQ must align before a limit is operational.</p>
-          <Link href="/standards">Read standards explainer</Link>
+          <h3>{page.card1Title}</h3>
+          <p>{page.card1Description}</p>
+          <Link href={page.card1LinkUrl}>{page.card1LinkText}</Link>
         </div>
         <div className="card">
-          <h3>Learn what HMTc is</h3>
-          <p>Neutral orientation to how certification frameworks operationalize category-specific contaminant controls.</p>
-          <Link href="/standards#hmtc">Read neutral explainer</Link>
+          <h3>{page.card2Title}</h3>
+          <p>{page.card2Description}</p>
+          <Link href={page.card2LinkUrl}>{page.card2LinkText}</Link>
         </div>
         <div className="card">
-          <h3>Newsletter</h3>
-          <p>Get weekly briefings and method notes.</p>
+          <h3>{page.card3Title}</h3>
+          <p>{page.card3Description}</p>
           <input aria-label="newsletter" className="search-input" placeholder="Email address" />
         </div>
       </section>
-
-      <p style={{ fontSize: '0.75rem', textAlign: 'center', opacity: 0.5, margin: '2rem 0 0' }}>Build stamp: 2026-02-16T06:00:00Z</p>
     </>
   );
 }

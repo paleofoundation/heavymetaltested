@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 function getEditLink(pathname: string): string | null {
+  if (pathname === '/') return '/admin/edit/pages/home';
+
   const contentPatterns = [
     { regex: /^\/metals\/([^/]+)$/, type: 'metals' },
     { regex: /^\/news\/([^/]+)$/, type: 'news' },

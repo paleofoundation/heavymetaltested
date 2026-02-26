@@ -6,7 +6,7 @@ import path from 'node:path';
 import matter from 'gray-matter';
 import { isGitHubEnabled, writeFileToGitHub, deleteFileFromGitHub } from '@/lib/github';
 
-const VALID_TYPES = ['metals', 'news', 'categories', 'playbooks', 'primers', 'mechanisms'];
+const VALID_TYPES = ['pages', 'metals', 'news', 'categories', 'playbooks', 'primers', 'mechanisms'];
 
 function contentPath(type: string, slug: string) {
   return path.join(process.cwd(), 'content', type, `${slug}.mdx`);

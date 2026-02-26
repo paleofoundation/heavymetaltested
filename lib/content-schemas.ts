@@ -26,6 +26,36 @@ const shared: FieldDef[] = [
 ];
 
 export const contentSchemas: Record<string, ContentTypeSchema> = {
+  pages: {
+    label: 'Page',
+    labelPlural: 'Pages',
+    slugPrefix: '/',
+    fields: [
+      { name: 'title', label: 'Title', type: 'text', required: true },
+      { name: 'slug', label: 'Slug', type: 'text', required: true },
+      { name: 'heroHeadline', label: 'Hero Headline', type: 'text', required: true },
+      { name: 'heroDescription', label: 'Hero Description', type: 'textarea', required: true },
+      { name: 'heroCtaText', label: 'Hero Button Text', type: 'text' },
+      { name: 'heroCtaUrl', label: 'Hero Button URL', type: 'text' },
+      { name: 'heroImageAlt', label: 'Hero Image Alt Text', type: 'text' },
+      { name: 'big8Heading', label: 'Big 8 Section Heading', type: 'text' },
+      { name: 'big8CardDescription', label: 'Big 8 Card Description', type: 'text' },
+      { name: 'categoriesHeading', label: 'Categories Section Heading', type: 'text' },
+      { name: 'categoriesCardDescription', label: 'Categories Card Description', type: 'text' },
+      { name: 'pullQuote', label: 'Pull Quote', type: 'textarea' },
+      { name: 'latestHeading', label: 'Latest Stories Heading', type: 'text' },
+      { name: 'card1Title', label: 'Bottom Card 1 — Title', type: 'text' },
+      { name: 'card1Description', label: 'Bottom Card 1 — Description', type: 'textarea' },
+      { name: 'card1LinkText', label: 'Bottom Card 1 — Link Text', type: 'text' },
+      { name: 'card1LinkUrl', label: 'Bottom Card 1 — Link URL', type: 'text' },
+      { name: 'card2Title', label: 'Bottom Card 2 — Title', type: 'text' },
+      { name: 'card2Description', label: 'Bottom Card 2 — Description', type: 'textarea' },
+      { name: 'card2LinkText', label: 'Bottom Card 2 — Link Text', type: 'text' },
+      { name: 'card2LinkUrl', label: 'Bottom Card 2 — Link URL', type: 'text' },
+      { name: 'card3Title', label: 'Bottom Card 3 — Title', type: 'text' },
+      { name: 'card3Description', label: 'Bottom Card 3 — Description', type: 'textarea' },
+    ],
+  },
   metals: {
     label: 'Metal',
     labelPlural: 'Metals',
