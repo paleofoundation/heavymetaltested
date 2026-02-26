@@ -1,12 +1,8 @@
-import EditButton from './EditButton';
-
 export default function ArticleShell({
   title,
   description,
   meta,
   html,
-  contentType,
-  slug,
 }: {
   title: string;
   description: string;
@@ -31,8 +27,6 @@ export default function ArticleShell({
       <div className="article-body container container-narrow">
         <div className="article-content" dangerouslySetInnerHTML={{ __html: html }} />
       </div>
-
-      {contentType && slug && <EditButton contentType={contentType} slug={slug} />}
     </article>
   );
 }

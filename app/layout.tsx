@@ -3,6 +3,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AdminSessionProvider from '@/components/AdminSessionProvider';
+import AdminToolbar from '@/components/AdminToolbar';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://heavymetalfacts.com'),
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main id="main-content">{children}</main>
           <Footer />
+          <AdminToolbar />
         </AdminSessionProvider>
       </body>
     </html>
