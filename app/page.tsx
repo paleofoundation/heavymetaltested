@@ -20,7 +20,7 @@ export default function HomePage() {
           </div>
           <div className="hero-media">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/hero.svg" alt="" className="hero-image" />
+            <img src="/images/hero.png" alt="Heavy metal facts — reporting on heavy metals in food, water, supplements, and more" className="hero-image" />
           </div>
         </div>
       </section>

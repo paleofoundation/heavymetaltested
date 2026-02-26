@@ -7,5 +7,5 @@ export function generateStaticParams() { return getSlugs('metals').map((metalSlu
 
 export default async function MetalPage({ params }: { params: { metalSlug: string } }) {
   const metal = await getBySlug<Metal>('metals', params.metalSlug);
-  return <ArticleShell title={metal.title} description={metal.description} meta={<p className="muted">Updated {metal.updatedAt}</p>} html={metal.html} />;
+  return <ArticleShell title={metal.title} description={metal.description} meta={<p className="muted">Updated {metal.updatedAt}</p>} html={metal.html} contentType="metals" slug={params.metalSlug} />;
 }
