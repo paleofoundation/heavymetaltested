@@ -7,14 +7,22 @@
     "build": "node scripts/generate-search-index.mjs && node scripts/generate-feeds.mjs && next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "ingest": "npx tsx scripts/ingest.ts",
+    "ingest:dry": "npx tsx scripts/ingest.ts --dry-run",
+    "evaluate": "npx tsx scripts/evaluate.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.78.0",
+    "@supabase/supabase-js": "^2.98.0",
     "@uiw/react-md-editor": "^4.0.11",
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.3.1",
     "gray-matter": "^4.0.3",
     "mammoth": "^1.11.0",
     "next": "14.2.5",
     "next-auth": "^4.24.13",
+    "openai": "^6.25.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "remark": "^15.0.1",
@@ -22,12 +30,14 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@types/cheerio": "^0.22.35",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.5",
     "prettier": "^3.3.3",
+    "tsx": "^4.21.0",
     "typescript": "^5.5.3"
   }
 }
