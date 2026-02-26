@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://heavymetalfacts.com/sitemap.xml

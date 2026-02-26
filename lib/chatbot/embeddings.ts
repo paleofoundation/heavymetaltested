@@ -1,33 +1,40 @@
-import OpenAI from 'openai';
 import { CHATBOT_CONFIG } from './config';
 
-let _openai: OpenAI | null = null;
-
-function getOpenAI(): OpenAI {
-  if (_openai) return _openai;
-  const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) throw new Error('Missing OPENAI_API_KEY environment variable');
-  _openai = new OpenAI({ apiKey });
-  return _openai;
+interface EmbeddingResponse {
+  data: Array<{ embedding: number[]; index: number }>;
+  usage: { prompt_tokens: number; total_tokens: number };
 }
 
 /**
- * Compute embeddings for a batch of texts.
+ * Compute embeddings via direct OpenAI API fetch (no SDK needed).
  * Automatically splits into sub-batches to stay within API limits.
  */
 export async function computeEmbeddings(texts: string[]): Promise<number[][]> {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) throw new Error('Missing OPENAI_API_KEY environment variable');
+
   const { model, dimensions, batchSize } = CHATBOT_CONFIG.embedding;
-  const client = getOpenAI();
   const allEmbeddings: number[][] = [];
 
   for (let i = 0; i < texts.length; i += batchSize) {
     const batch = texts.slice(i, i + batchSize);
-    const response = await client.embeddings.create({
-      model,
-      input: batch,
-      dimensions,
+
+    const res = await fetch('https://api.openai.com/v1/embeddings', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ model, input: batch, dimensions }),
     });
-    for (const item of response.data) {
+
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`OpenAI embeddings API error ${res.status}: ${err}`);
+    }
+
+    const json: EmbeddingResponse = await res.json();
+    for (const item of json.data) {
       allEmbeddings.push(item.embedding);
     }
   }
@@ -42,7 +49,6 @@ export async function computeEmbedding(text: string): Promise<number[]> {
 
 /**
  * Rough token count approximation (4 chars ≈ 1 token for English).
- * Good enough for chunking decisions; actual billing uses the real tokenizer.
  */
 export function estimateTokens(text: string): number {
   return Math.ceil(text.length / 4);

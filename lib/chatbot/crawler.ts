@@ -81,6 +81,29 @@ export function crawlLocalContent(rootDir?: string): CrawledPage[] {
 }
 
 /**
+ * Lightweight HTML-to-text extraction (no cheerio dependency).
+ */
+function extractTextFromHtml(html: string): { title: string; text: string } {
+  const titleMatch = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i)
+    || html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  const title = titleMatch ? titleMatch[1].replace(/<[^>]+>/g, '').trim() : '';
+
+  let body = html;
+  // Remove scripts, styles, nav, header, footer
+  body = body.replace(/<(script|style|nav|header|footer|noscript)[^>]*>[\s\S]*?<\/\1>/gi, ' ');
+  // Try to extract just <main> content
+  const mainMatch = body.match(/<main[^>]*>([\s\S]*?)<\/main>/i)
+    || body.match(/<article[^>]*>([\s\S]*?)<\/article>/i);
+  if (mainMatch) body = mainMatch[1];
+  // Strip remaining tags
+  body = body.replace(/<[^>]+>/g, ' ');
+  // Normalize whitespace
+  body = body.replace(/\s+/g, ' ').trim();
+
+  return { title, text: body };
+}
+
+/**
  * Fetch a single live URL and extract main content.
  * Used for incremental reindex of production pages.
  */
@@ -92,14 +115,7 @@ export async function crawlUrl(url: string): Promise<CrawledPage | null> {
     if (!res.ok) return null;
 
     const html = await res.text();
-    const { load } = await import('cheerio');
-    const $ = load(html);
-
-    $('script, style, nav, header, footer, .admin-toolbar, .chat-widget').remove();
-
-    const title = $('h1').first().text().trim() || $('title').text().trim();
-    const mainContent = $('main, article, [role="main"]').first();
-    const text = (mainContent.length ? mainContent : $('body')).text().replace(/\s+/g, ' ').trim();
+    const { title, text } = extractTextFromHtml(html);
 
     return {
       url,

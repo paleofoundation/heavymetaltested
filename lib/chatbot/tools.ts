@@ -1,11 +1,16 @@
-import type Anthropic from '@anthropic-ai/sdk';
 import { searchByKeyword, RetrievedChunk } from './retrieval';
 import { convertUnit } from './units';
 import { createTicket } from './tickets';
 
 export type ToolName = 'search_knowledge_base' | 'convert_units' | 'create_ticket';
 
-export const TOOL_DEFINITIONS: Anthropic.Tool[] = [
+interface ToolDefinition {
+  name: string;
+  description: string;
+  input_schema: Record<string, unknown>;
+}
+
+export const TOOL_DEFINITIONS: ToolDefinition[] = [
   {
     name: 'search_knowledge_base',
     description:

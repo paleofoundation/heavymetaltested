@@ -1,0 +1,373 @@
+[
+  {
+    "title": "Aluminum",
+    "description": "Evidence-oriented overview of aluminum exposure pathways, testing, and standards context.",
+    "body": "## What it is\nAluminum is one of the Big 8 contaminant metals tracked across food, water, and product systems. This stub is structured for newsroom use and will be expanded with source-linked reporting.\n\n## Where it shows up\nConcentrations can vary by raw material origin, industrial processing, and storage or handling equipment. Category pages link to where this pattern is most often reported.\n\n## Major health concerns\nRisk framing depends on dose, life stage, and exposure duration. This publication avoids alarm language and focuses on practical interpretation of evidence quality.\n\n## Highest-risk foods or products\n| Product context | Why it can trend higher |\n|---|---|\n| Placeholder example category | Uptake from source environment and concentration during processing. |\n| Placeholder example product | Legacy equipment or ingredient blending variability. |\n\n## Testing and speciation notes\nMethod fit matters: matrix effects, digestion choices, and analyte form can change interpretation. Speciation is especially important when toxicity differs by chemical form.\n\n## Practical reduction strategies\nShort-term reductions often combine sourcing changes, blending controls, and tighter inco",
+    "metals": [
+      "aluminum"
+    ],
+    "categories": [],
+    "href": "/metals/aluminum"
+  },
+  {
+    "title": "Arsenic",
+    "description": "Arsenic is a naturally occurring metalloid and Group 1 carcinogen that persists as a global contaminant in water, food, and consumer products. This review synthesizes current evidence on arsenic speciation, environmental distribution, exposure pathways, health effects, analytical testing, mitigation strategies, and regulatory standards. Inorganic arsenic species, arsenite and arsenate, account for the greatest toxicological concern and require speciation analysis for accurate risk assessment. Major exposure sources include contaminated groundwater, rice and rice-based foods, seafood, infant products, dietary supplements, and certain cosmetics. Chronic exposure is associated with carcinogenesis, cardiovascular disease, neurodevelopmental impairment, adverse pregnancy outcomes, and endocrine disruption through mechanisms involving oxidative stress, epigenetic alteration, and nitric oxide dysregulation. Analytical advances such as HPLC-ICP-MS enable precise speciation, while agricultural water management, soil amendments, and treatment technologies reduce exposure. Regulatory inconsistencies and implementation gaps continue to limit global risk reduction.",
+    "body": "## What it is\nArsenic is a naturally occurring metalloid classified as a Group 1 carcinogen by the International Agency for Research on Cancer, posing one of the most significant global health challenges in food and water systems [1]. The element exists in the environment in multiple oxidative states and chemical forms, with its toxicity varying considerably depending on its molecular configuration. The most prevalent forms in the environment are inorganic species—arsenite (As(III)) and arsenate (As(V))—which are substantially more toxic than organic arsenic compounds such as arsenobetaine (AsB), monomethylarsonic acid (MMA), and dimethylarsinic acid (DMA) [2]. This speciation distinction is critical for risk assessment, as the toxicity profile differs markedly between chemical forms, making accurate determination essential for meaningful health risk evaluation [3].\n\nArsenic enters environmental systems through both natural geological processes and anthropogenic activities. Geogenic sources include weathering of arsenic-bearing minerals in rocks and soils, while anthropogenic pathways encompass mining operations, industrial emissions, agricultural pesticide applications, and manufa",
+    "metals": [
+      "arsenic"
+    ],
+    "categories": [],
+    "href": "/metals/arsenic"
+  },
+  {
+    "title": "Cadmium",
+    "description": "Cadmium is a nonessential, highly toxic heavy metal that persists in environmental and biological systems, bioaccumulates in food chains, and exerts multi-organ toxicity at low exposure levels. This review synthesizes current evidence on cadmium sources, environmental behavior, dietary exposure pathways, health outcomes, analytical detection methods, remediation strategies, and regulatory frameworks. Major exposure vectors include rice, leafy vegetables, aquatic organisms, processed foods, and drinking water, with contamination driven by phosphate fertilizers, mining, atmospheric deposition, and wastewater irrigation. Toxicological data demonstrate renal, skeletal, cardiovascular, metabolic, reproductive, developmental, and carcinogenic effects, often occurring below traditional safety thresholds. Advances in ICP-MS–based quantification, speciation analysis, and bioaccessibility testing refine exposure assessment, while soil amendments, biochar technologies, phytoremediation, and cultivar selection provide feasible mitigation pathways. Regulatory standards continue to evolve, though emerging dose-response evidence suggests that current tolerable intake values may not adequately protect vulnerable populations. Integrated monitoring, standardized testing, and preventive agricultural management remain central to long-term risk reduction.",
+    "body": "## What it is\nCadmium (Cd) is a nonessential, highly toxic heavy metal classified by the International Agency for Research on Cancer as a human carcinogen [1]. As a pervasive environmental and industrial toxin, cadmium readily moves through soil-plant systems and possesses a prolonged biological half-life of 16 to 30 years in the human body, enabling significant bioaccumulation over time [2]. Unlike essential trace elements, cadmium has no known biological function in humans and persists in the environment through continuous cycling across terrestrial and aquatic ecosystems. Its widespread presence stems from both natural geological processes and extensive anthropogenic activities, including industrial emissions, mining operations, agricultural practices involving contaminated fertilizers, and improper waste disposal [3].\n\n### Primary Sources of Cadmium Contamination\n\nThe main sources of cadmium contamination in agricultural and aquatic systems are multifaceted. Industrial phosphate fertilizers represent a significant pathway, as they naturally contain elevated cadmium concentrations accumulated from ore deposits [4]. Mining and smelting operations generate concentrated releases of",
+    "metals": [
+      "cadmium"
+    ],
+    "categories": [],
+    "href": "/metals/cadmium"
+  },
+  {
+    "title": "Chromium",
+    "description": "Evidence-oriented overview of chromium exposure pathways, testing, and standards context.",
+    "body": "## What it is\nChromium is one of the Big 8 contaminant metals tracked across food, water, and product systems. This stub is structured for newsroom use and will be expanded with source-linked reporting.\n\n## Where it shows up\nConcentrations can vary by raw material origin, industrial processing, and storage or handling equipment. Category pages link to where this pattern is most often reported.\n\n## Major health concerns\nRisk framing depends on dose, life stage, and exposure duration. This publication avoids alarm language and focuses on practical interpretation of evidence quality.\n\n## Highest-risk foods or products\n| Product context | Why it can trend higher |\n|---|---|\n| Placeholder example category | Uptake from source environment and concentration during processing. |\n| Placeholder example product | Legacy equipment or ingredient blending variability. |\n\n## Testing and speciation notes\nMethod fit matters: matrix effects, digestion choices, and analyte form can change interpretation. Speciation is especially important when toxicity differs by chemical form.\n\n## Practical reduction strategies\nShort-term reductions often combine sourcing changes, blending controls, and tighter inco",
+    "metals": [
+      "chromium"
+    ],
+    "categories": [],
+    "href": "/metals/chromium"
+  },
+  {
+    "title": "Lead",
+    "description": "Lead remains one of the most extensively studied and consequential environmental toxicants due to its persistence, multi-pathway exposure profile, and absence of a safe biological threshold. This review synthesizes current evidence on lead exposure pathways, toxicokinetics, health effects, analytical detection methods, regulatory standards, and mitigation strategies. Dietary intake, particularly from staple crops and contaminated water, constitutes the dominant exposure route in most populations, with enhanced gastrointestinal absorption in children resulting in disproportionate risk. Epidemiological and mechanistic data consistently demonstrate causal relationships between lead exposure and neurodevelopmental impairment, cardiovascular disease, renal dysfunction, and reproductive toxicity. Advances in analytical technologies, including ICP-MS and electrochemical methods, support increasingly sensitive detection across matrices, yet disparities in testing capacity persist globally. Regulatory frameworks continue to evolve in response to evidence supporting non-threshold neurotoxicity. Effective mitigation requires integrated monitoring, soil and water management, agricultural intervention, and harmonized standards. Sustained reductions in population blood lead levels depend on coordinated environmental, food safety, and public health strategies informed by robust risk assessment methodologies.",
+    "body": "## What it is\nLead (Pb) is recognized globally as one of the most significant toxic metals threatening human health and environmental integrity. [1] As a ubiquitous environmental contaminant occurring naturally and from anthropogenic sources, lead contamination presents a persistent public health challenge with no known safe exposure threshold. [2] The metal is tracked extensively across food, water, and product systems due to its historical and contemporary use in numerous industrial applications, including battery manufacturing, electronic waste recycling, paint production, and ammunition. [3]\n\nLead's classification as a priority contaminant reflects the breadth of its occurrence and the well-documented dose-response relationships for multiple health endpoints. [4] Unlike many environmental pollutants, lead exhibits remarkable persistence in biological systems, with approximately 90% of accumulated lead stored in bone tissue for decades following exposure. [3] This bioaccumulation characteristic means that even low-level chronic exposures during vulnerable developmental periods can result in lasting physiological impacts that manifest throughout the lifespan. [5] Global surveilla",
+    "metals": [
+      "lead"
+    ],
+    "categories": [],
+    "href": "/metals/lead"
+  },
+  {
+    "title": "Mercury",
+    "description": "Evidence-oriented overview of mercury exposure pathways, testing, and standards context.",
+    "body": "## What it is\nMercury is one of the Big 8 contaminant metals tracked across food, water, and product systems. This stub is structured for newsroom use and will be expanded with source-linked reporting.\n\n## Where it shows up\nConcentrations can vary by raw material origin, industrial processing, and storage or handling equipment. Category pages link to where this pattern is most often reported.\n\n## Major health concerns\nRisk framing depends on dose, life stage, and exposure duration. This publication avoids alarm language and focuses on practical interpretation of evidence quality.\n\n## Highest-risk foods or products\n| Product context | Why it can trend higher |\n|---|---|\n| Placeholder example category | Uptake from source environment and concentration during processing. |\n| Placeholder example product | Legacy equipment or ingredient blending variability. |\n\n## Testing and speciation notes\nMethod fit matters: matrix effects, digestion choices, and analyte form can change interpretation. Speciation is especially important when toxicity differs by chemical form.\n\n## Practical reduction strategies\nShort-term reductions often combine sourcing changes, blending controls, and tighter incom",
+    "metals": [
+      "mercury"
+    ],
+    "categories": [],
+    "href": "/metals/mercury"
+  },
+  {
+    "title": "Nickel",
+    "description": "Evidence-oriented overview of nickel exposure pathways, testing, and standards context.",
+    "body": "## What it is\nNickel is one of the Big 8 contaminant metals tracked across food, water, and product systems. This stub is structured for newsroom use and will be expanded with source-linked reporting.\n\n## Where it shows up\nConcentrations can vary by raw material origin, industrial processing, and storage or handling equipment. Category pages link to where this pattern is most often reported.\n\n## Major health concerns\nRisk framing depends on dose, life stage, and exposure duration. This publication avoids alarm language and focuses on practical interpretation of evidence quality.\n\n## Highest-risk foods or products\n| Product context | Why it can trend higher |\n|---|---|\n| Placeholder example category | Uptake from source environment and concentration during processing. |\n| Placeholder example product | Legacy equipment or ingredient blending variability. |\n\n## Testing and speciation notes\nMethod fit matters: matrix effects, digestion choices, and analyte form can change interpretation. Speciation is especially important when toxicity differs by chemical form.\n\n## Practical reduction strategies\nShort-term reductions often combine sourcing changes, blending controls, and tighter incomi",
+    "metals": [
+      "nickel"
+    ],
+    "categories": [],
+    "href": "/metals/nickel"
+  },
+  {
+    "title": "Tin",
+    "description": "Evidence-oriented overview of tin exposure pathways, testing, and standards context.",
+    "body": "## What it is\nTin is one of the Big 8 contaminant metals tracked across food, water, and product systems. This stub is structured for newsroom use and will be expanded with source-linked reporting.\n\n## Where it shows up\nConcentrations can vary by raw material origin, industrial processing, and storage or handling equipment. Category pages link to where this pattern is most often reported.\n\n## Major health concerns\nRisk framing depends on dose, life stage, and exposure duration. This publication avoids alarm language and focuses on practical interpretation of evidence quality.\n\n## Highest-risk foods or products\n| Product context | Why it can trend higher |\n|---|---|\n| Placeholder example category | Uptake from source environment and concentration during processing. |\n| Placeholder example product | Legacy equipment or ingredient blending variability. |\n\n## Testing and speciation notes\nMethod fit matters: matrix effects, digestion choices, and analyte form can change interpretation. Speciation is especially important when toxicity differs by chemical form.\n\n## Practical reduction strategies\nShort-term reductions often combine sourcing changes, blending controls, and tighter incoming ",
+    "metals": [
+      "tin"
+    ],
+    "categories": [],
+    "href": "/metals/tin"
+  },
+  {
+    "title": "Cocoa & Chocolate",
+    "description": "Category explainer for cocoa & chocolate contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "cocoa-chocolate"
+    ],
+    "href": "/categories/cocoa-chocolate"
+  },
+  {
+    "title": "Drinking Water",
+    "description": "Category explainer for drinking water contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "drinking-water"
+    ],
+    "href": "/categories/drinking-water"
+  },
+  {
+    "title": "Food-contact Materials & Kitchenware",
+    "description": "Category explainer for food-contact materials & kitchenware contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "food-contact-materials-kitchenware"
+    ],
+    "href": "/categories/food-contact-materials-kitchenware"
+  },
+  {
+    "title": "Grains & Cereals",
+    "description": "Category explainer for grains & cereals contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "grains-cereals"
+    ],
+    "href": "/categories/grains-cereals"
+  },
+  {
+    "title": "Infant Foods",
+    "description": "Category explainer for infant foods contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "infant-foods"
+    ],
+    "href": "/categories/infant-foods"
+  },
+  {
+    "title": "Leafy Greens",
+    "description": "Category explainer for leafy greens contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "leafy-greens"
+    ],
+    "href": "/categories/leafy-greens"
+  },
+  {
+    "title": "Root Vegetables",
+    "description": "Category explainer for root vegetables contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "root-vegetables"
+    ],
+    "href": "/categories/root-vegetables"
+  },
+  {
+    "title": "Seafood",
+    "description": "Category explainer for seafood contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "seafood"
+    ],
+    "href": "/categories/seafood"
+  },
+  {
+    "title": "Spices",
+    "description": "Category explainer for spices contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "spices"
+    ],
+    "href": "/categories/spices"
+  },
+  {
+    "title": "Supplements",
+    "description": "Category explainer for supplements contaminant dynamics and testing strategy.",
+    "body": "## Why this category can concentrate contaminants\nThis category is included because contaminant patterns can emerge from soil uptake, concentration during drying or processing, or supply-chain blending.\n\n## Metals to watch\nLead, arsenic, cadmium, mercury, nickel, chromium, tin, and aluminum may appear in different proportions depending on source and process profile.\n\n## Testing notes\n| Testing decision | Why it matters |\n|---|---|\n| Sampling plan | Lot heterogeneity can mask localized hotspots. |\n| Method + LOQ alignment | Limits are meaningful only if methods can quantify near the decision point. |\n\n## Stakeholder guidance\n### Consumers\nUse variety and trusted data sources; avoid interpreting a single report without context.\n\n### Brands\nMap suppliers and request method-aligned certificates, with periodic third-party verification.\n\n### Manufacturers\nIdentify process-control points where concentration or contamination entry is most likely.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [],
+    "categories": [
+      "supplements"
+    ],
+    "href": "/categories/supplements"
+  },
+  {
+    "title": "Weekly Briefing: Infant cereals and arsenic method updates",
+    "description": "Template newsroom post covering what changed, why it matters, and what to watch next.",
+    "body": "## What happened\nThis weekly briefing summarizes a newly published dataset, guidance update, or surveillance signal relevant to heavy-metal contamination.\n\n## Why it matters\nThe update affects how readers interpret baseline concentrations, lab comparability, or likely exposure in a specific product category.\n\n## Metals implicated\nPrimary signals were observed for arsenic, lead in the monitored datasets.\n\n## What to watch next\nExpect follow-up reporting on method harmonization, additional surveillance cycles, and category-specific mitigation pilots.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [
+      "arsenic",
+      "lead"
+    ],
+    "categories": [
+      "infant-foods",
+      "grains-cereals"
+    ],
+    "href": "/news/weekly-briefing-01"
+  },
+  {
+    "title": "Weekly Briefing: Cocoa sourcing variability and cadmium",
+    "description": "Template newsroom post covering what changed, why it matters, and what to watch next.",
+    "body": "## What happened\nThis weekly briefing summarizes a newly published dataset, guidance update, or surveillance signal relevant to heavy-metal contamination.\n\n## Why it matters\nThe update affects how readers interpret baseline concentrations, lab comparability, or likely exposure in a specific product category.\n\n## Metals implicated\nPrimary signals were observed for cadmium, lead in the monitored datasets.\n\n## What to watch next\nExpect follow-up reporting on method harmonization, additional surveillance cycles, and category-specific mitigation pilots.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [
+      "cadmium",
+      "lead"
+    ],
+    "categories": [
+      "cocoa-chocolate"
+    ],
+    "href": "/news/weekly-briefing-02"
+  },
+  {
+    "title": "Weekly Briefing: Seafood monitoring and mercury speciation",
+    "description": "Template newsroom post covering what changed, why it matters, and what to watch next.",
+    "body": "## What happened\nThis weekly briefing summarizes a newly published dataset, guidance update, or surveillance signal relevant to heavy-metal contamination.\n\n## Why it matters\nThe update affects how readers interpret baseline concentrations, lab comparability, or likely exposure in a specific product category.\n\n## Metals implicated\nPrimary signals were observed for mercury, arsenic in the monitored datasets.\n\n## What to watch next\nExpect follow-up reporting on method harmonization, additional surveillance cycles, and category-specific mitigation pilots.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [
+      "mercury",
+      "arsenic"
+    ],
+    "categories": [
+      "seafood"
+    ],
+    "href": "/news/weekly-briefing-03"
+  },
+  {
+    "title": "Weekly Briefing: Spice concentration effects across lead and chromium",
+    "description": "Template newsroom post covering what changed, why it matters, and what to watch next.",
+    "body": "## What happened\nThis weekly briefing summarizes a newly published dataset, guidance update, or surveillance signal relevant to heavy-metal contamination.\n\n## Why it matters\nThe update affects how readers interpret baseline concentrations, lab comparability, or likely exposure in a specific product category.\n\n## Metals implicated\nPrimary signals were observed for lead, chromium in the monitored datasets.\n\n## What to watch next\nExpect follow-up reporting on method harmonization, additional surveillance cycles, and category-specific mitigation pilots.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [
+      "lead",
+      "chromium"
+    ],
+    "categories": [
+      "spices"
+    ],
+    "href": "/news/weekly-briefing-04"
+  },
+  {
+    "title": "Weekly Briefing: Drinking water utility reports and lead trends",
+    "description": "Template newsroom post covering what changed, why it matters, and what to watch next.",
+    "body": "## What happened\nThis weekly briefing summarizes a newly published dataset, guidance update, or surveillance signal relevant to heavy-metal contamination.\n\n## Why it matters\nThe update affects how readers interpret baseline concentrations, lab comparability, or likely exposure in a specific product category.\n\n## Metals implicated\nPrimary signals were observed for lead, aluminum in the monitored datasets.\n\n## What to watch next\nExpect follow-up reporting on method harmonization, additional surveillance cycles, and category-specific mitigation pilots.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [
+      "lead",
+      "aluminum"
+    ],
+    "categories": [
+      "drinking-water"
+    ],
+    "href": "/news/weekly-briefing-05"
+  },
+  {
+    "title": "Weekly Briefing: Supplements testing variability and nickel",
+    "description": "Template newsroom post covering what changed, why it matters, and what to watch next.",
+    "body": "## What happened\nThis weekly briefing summarizes a newly published dataset, guidance update, or surveillance signal relevant to heavy-metal contamination.\n\n## Why it matters\nThe update affects how readers interpret baseline concentrations, lab comparability, or likely exposure in a specific product category.\n\n## Metals implicated\nPrimary signals were observed for nickel, tin in the monitored datasets.\n\n## What to watch next\nExpect follow-up reporting on method harmonization, additional surveillance cycles, and category-specific mitigation pilots.\n\n## References\n1. Placeholder reference one.\n2. Placeholder reference two.\n",
+    "metals": [
+      "nickel",
+      "tin"
+    ],
+    "categories": [
+      "supplements"
+    ],
+    "href": "/news/weekly-briefing-06"
+  },
+  {
+    "title": "Glossary of Testing Terms",
+    "description": "Testing primer: glossary of testing terms.",
+    "body": "## Key concepts\nThis primer explains glossary of testing terms with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/glossary"
+  },
+  {
+    "title": "ICP-MS Basics",
+    "description": "Testing primer: icp-ms basics.",
+    "body": "## Key concepts\nThis primer explains icp-ms basics with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/icp-ms-basics"
+  },
+  {
+    "title": "Interpreting a COA",
+    "description": "Testing primer: interpreting a coa.",
+    "body": "## Key concepts\nThis primer explains interpreting a coa with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/interpreting-a-coa"
+  },
+  {
+    "title": "LOQ vs LOD",
+    "description": "Testing primer: loq vs lod.",
+    "body": "## Key concepts\nThis primer explains loq vs lod with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/loq-vs-lod"
+  },
+  {
+    "title": "Sampling Variance and Composite Sampling",
+    "description": "Testing primer: sampling variance and composite sampling.",
+    "body": "## Key concepts\nThis primer explains sampling variance and composite sampling with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/sampling-variance-composite"
+  },
+  {
+    "title": "Speciation: iAs and MeHg",
+    "description": "Testing primer: speciation: ias and mehg.",
+    "body": "## Key concepts\nThis primer explains speciation: ias and mehg with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/speciation-ias-mehg"
+  },
+  {
+    "title": "Why Labs Can Differ",
+    "description": "Testing primer: why labs can differ.",
+    "body": "## Key concepts\nThis primer explains why labs can differ with plain-language definitions for cross-functional teams.\n\n| Term | Operational meaning |\n|---|---|\n| Placeholder term | Placeholder explanation for method users. |\n| Placeholder term 2 | How this affects interpretation decisions. |\n\n## Practical interpretation\nUse these definitions when reviewing lab reports, method validations, and limit-setting discussions.\n\n## References\n1. Placeholder reference.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/testing/why-labs-differ"
+  },
+  {
+    "title": "Kidney Toxicology",
+    "description": "Mechanistic summary: kidney toxicology and metal exposure.",
+    "body": "## Clinical framing\nThis topic page provides a high-level summary intended for clinicians, quality teams, and policy readers.\n\n## Mechanistic summary\nCurrent literature suggests dose and exposure timing drive effect magnitude, and co-exposures can confound attribution.\n\n## Evidence boundaries\nObserved associations vary by cohort design and endpoint definition; avoid causal claims beyond the cited evidence.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/mechanisms/kidney-toxicology"
+  },
+  {
+    "title": "Neurodevelopment",
+    "description": "Mechanistic summary: neurodevelopment and metal exposure.",
+    "body": "## Clinical framing\nThis topic page provides a high-level summary intended for clinicians, quality teams, and policy readers.\n\n## Mechanistic summary\nCurrent literature suggests dose and exposure timing drive effect magnitude, and co-exposures can confound attribution.\n\n## Evidence boundaries\nObserved associations vary by cohort design and endpoint definition; avoid causal claims beyond the cited evidence.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/mechanisms/neurodevelopment"
+  },
+  {
+    "title": "Oxidative Stress",
+    "description": "Mechanistic summary: oxidative stress and metal exposure.",
+    "body": "## Clinical framing\nThis topic page provides a high-level summary intended for clinicians, quality teams, and policy readers.\n\n## Mechanistic summary\nCurrent literature suggests dose and exposure timing drive effect magnitude, and co-exposures can confound attribution.\n\n## Evidence boundaries\nObserved associations vary by cohort design and endpoint definition; avoid causal claims beyond the cited evidence.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/mechanisms/oxidative-stress"
+  },
+  {
+    "title": "Placental Transfer",
+    "description": "Mechanistic summary: placental transfer and metal exposure.",
+    "body": "## Clinical framing\nThis topic page provides a high-level summary intended for clinicians, quality teams, and policy readers.\n\n## Mechanistic summary\nCurrent literature suggests dose and exposure timing drive effect magnitude, and co-exposures can confound attribution.\n\n## Evidence boundaries\nObserved associations vary by cohort design and endpoint definition; avoid causal claims beyond the cited evidence.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/mechanisms/placental-transfer"
+  },
+  {
+    "title": "Brands Playbook",
+    "description": "Operational guidance for brands to reduce heavy metal exposure risks.",
+    "body": "## Objective\nThis playbook outlines practical, non-alarmist steps for brands.\n\n## Recommended pathway\n| Step | Why it helps |\n|---|---|\n| Map baseline risk | Helps prioritize where controls matter most. |\n| Apply verification cadence | Keeps performance measurable over time. |\n\n## Decision framework\nPrioritize repeatable controls before one-off interventions and document rationale for trade-offs.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/playbooks/brands"
+  },
+  {
+    "title": "Consumers Playbook",
+    "description": "Operational guidance for consumers to reduce heavy metal exposure risks.",
+    "body": "## Objective\nThis playbook outlines practical, non-alarmist steps for consumers.\n\n## Recommended pathway\n| Step | Why it helps |\n|---|---|\n| Map baseline risk | Helps prioritize where controls matter most. |\n| Apply verification cadence | Keeps performance measurable over time. |\n\n## Decision framework\nPrioritize repeatable controls before one-off interventions and document rationale for trade-offs.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/playbooks/consumers"
+  },
+  {
+    "title": "Manufacturers Playbook",
+    "description": "Operational guidance for manufacturers to reduce heavy metal exposure risks.",
+    "body": "## Objective\nThis playbook outlines practical, non-alarmist steps for manufacturers.\n\n## Recommended pathway\n| Step | Why it helps |\n|---|---|\n| Map baseline risk | Helps prioritize where controls matter most. |\n| Apply verification cadence | Keeps performance measurable over time. |\n\n## Decision framework\nPrioritize repeatable controls before one-off interventions and document rationale for trade-offs.\n\n## References\n1. Placeholder source.\n",
+    "metals": [],
+    "categories": [],
+    "href": "/playbooks/manufacturers"
+  }
+]
