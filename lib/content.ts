@@ -24,6 +24,40 @@ function addRefIdsToOrderedList(refHtml: string): string {
   });
 }
 
+function linkifyReferenceDois(refHtml: string): string {
+  let out = refHtml;
+
+  // Short-form DOIs: "doi: 10.xxxx/yyyy" -> clickable https://doi.org/... link
+  out = out.replace(
+    /doi:\s*(?!https?:\/\/)(10\.\d{4,9}\/[^\s<]+)/gi,
+    (_match, doi: string) => {
+      const clean = doi.replace(/[.,"');\]]+$/, '');
+      return `doi: <a href="https://doi.org/${clean}" target="_blank" rel="noopener">${clean}</a>`;
+    },
+  );
+
+  // Full-URL DOIs: "doi: https://doi.org/10.xxxx/yyyy" -> clickable link
+  out = out.replace(
+    /doi:\s*(https:\/\/doi\.org\/[^\s<.,;)"]+)/gi,
+    (_match, url: string) => {
+      const clean = url.replace(/[.)]+$/, '');
+      return `doi: <a href="${clean}" target="_blank" rel="noopener">${clean}</a>`;
+    },
+  );
+
+  // Remark sometimes wraps URLs in <a> already; skip those.
+  // Plain URLs not already inside an <a> tag
+  out = out.replace(
+    /(?<!href="|">)(https?:\/\/[^\s<)]+)/g,
+    (match) => {
+      const clean = match.replace(/[.)]+$/, '');
+      return `<a href="${clean}" target="_blank" rel="noopener">${clean}</a>`;
+    },
+  );
+
+  return out;
+}
+
 export async function markdownToHtml(markdown: string) {
   const processedContent = await remark().use(gfm).use(html).process(markdown);
   let result = processedContent.toString();
@@ -37,7 +71,8 @@ export async function markdownToHtml(markdown: string) {
       /\[(\d{1,3})\]/g,
       '<sup class="cite-ref"><a href="#ref-$1">$1</a></sup>',
     );
-    const linkedRefs = addRefIdsToOrderedList(refsPart);
+    const idRefs = addRefIdsToOrderedList(refsPart);
+    const linkedRefs = linkifyReferenceDois(idRefs);
     result = linkedBody + linkedRefs;
   }
 
