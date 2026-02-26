@@ -35,6 +35,7 @@ export default async function EditPage({ params }: { params: { type: string; slu
         fields={schema.fields}
         initialFrontmatter={frontmatter}
         initialBody={body}
+        sections={schema.sections}
       />
     </div>
   );

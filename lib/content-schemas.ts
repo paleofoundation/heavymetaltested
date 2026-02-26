@@ -1,3 +1,6 @@
+import type { SectionDef } from './metal-sections';
+import { metalSections } from './metal-sections';
+
 export type FieldType = 'text' | 'textarea' | 'date' | 'tags';
 
 export interface FieldDef {
@@ -12,6 +15,7 @@ export interface ContentTypeSchema {
   labelPlural: string;
   slugPrefix: string;
   fields: FieldDef[];
+  sections?: SectionDef[];
 }
 
 const shared: FieldDef[] = [
@@ -32,6 +36,7 @@ export const contentSchemas: Record<string, ContentTypeSchema> = {
       { name: 'synonyms', label: 'Synonyms', type: 'tags' },
       { name: 'updatedAt', label: 'Updated At', type: 'date' },
     ],
+    sections: metalSections,
   },
   news: {
     label: 'News Post',

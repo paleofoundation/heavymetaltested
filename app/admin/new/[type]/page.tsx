@@ -46,6 +46,7 @@ export default function NewContentPage({ params }: { params: { type: string } })
         initialFrontmatter={defaults}
         initialBody=""
         isNew
+        sections={schema.sections}
       />
     </div>
   );

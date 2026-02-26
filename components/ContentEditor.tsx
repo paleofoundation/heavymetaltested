@@ -1,9 +1,12 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import type { FieldDef } from '@/lib/content-schemas';
+import type { SectionDef } from '@/lib/metal-sections';
+import SectionEditor from './SectionEditor';
+import { splitBodyIntoSections, assembleSectionsToBody } from '@/lib/metal-sections';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), { ssr: false });
 
@@ -14,6 +17,7 @@ interface ContentEditorProps {
   initialFrontmatter: Record<string, unknown>;
   initialBody: string;
   isNew?: boolean;
+  sections?: SectionDef[];
 }
 
 function TagInput({ value, onChange }: { value: string[]; onChange: (v: string[]) => void }) {
@@ -53,12 +57,19 @@ function TagInput({ value, onChange }: { value: string[]; onChange: (v: string[]
   );
 }
 
-export default function ContentEditor({ contentType, slug, fields, initialFrontmatter, initialBody, isNew }: ContentEditorProps) {
+export default function ContentEditor({ contentType, slug, fields, initialFrontmatter, initialBody, isNew, sections: sectionDefs }: ContentEditorProps) {
   const router = useRouter();
   const [frontmatter, setFrontmatter] = useState<Record<string, unknown>>(initialFrontmatter);
   const [body, setBody] = useState(initialBody);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState('');
+
+  const initialSectionValues = useMemo(
+    () => sectionDefs ? splitBodyIntoSections(initialBody) : {},
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+  const [sectionValues, setSectionValues] = useState<Record<string, string>>(initialSectionValues);
 
   const setField = useCallback((name: string, value: unknown) => {
     setFrontmatter((prev) => ({ ...prev, [name]: value }));
@@ -71,10 +82,13 @@ export default function ContentEditor({ contentType, slug, fields, initialFrontm
       const targetSlug = (frontmatter.slug as string) || slug;
       const url = isNew ? `/api/content/${contentType}` : `/api/content/${contentType}/${slug}`;
       const method = isNew ? 'POST' : 'PUT';
+      const finalBody = sectionDefs
+        ? assembleSectionsToBody(sectionValues, frontmatter.references as string[] | undefined)
+        : body;
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ frontmatter, body }),
+        body: JSON.stringify({ frontmatter, body: finalBody }),
       });
       if (!res.ok) {
         const data = await res.json();
@@ -156,12 +170,27 @@ export default function ContentEditor({ contentType, slug, fields, initialFrontm
         </div>
       </div>
 
-      <div>
-        <h2 style={{ fontSize: 'var(--iu-ts-20)', marginBottom: 'var(--iu-space-sm)' }}>Body (Markdown)</h2>
-        <div data-color-mode="light">
-          <MDEditor value={body} onChange={(v) => setBody(v ?? '')} height={500} />
+      {sectionDefs ? (
+        <div>
+          <h2 style={{ fontSize: 'var(--iu-ts-20)', marginBottom: 'var(--iu-space-sm)' }}>Sections</h2>
+          <SectionEditor
+            sectionDefs={sectionDefs}
+            initialSections={sectionValues}
+            onSectionsChange={setSectionValues}
+            onImportMeta={(meta) => {
+              if (meta.description) setField('description', meta.description);
+              if (meta.references) setField('references', meta.references);
+            }}
+          />
         </div>
-      </div>
+      ) : (
+        <div>
+          <h2 style={{ fontSize: 'var(--iu-ts-20)', marginBottom: 'var(--iu-space-sm)' }}>Body (Markdown)</h2>
+          <div data-color-mode="light">
+            <MDEditor value={body} onChange={(v) => setBody(v ?? '')} height={500} />
+          </div>
+        </div>
+      )}
 
       {message && (
         <p style={{
