@@ -337,6 +337,10 @@ a.card:hover::after {
   border-top: 1px solid var(--iu-border);
   flex-grow: 1;
   transition: color 0.25s ease, border-color 0.25s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 a.card:hover p {
