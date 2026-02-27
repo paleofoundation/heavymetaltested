@@ -112,6 +112,17 @@ export default function NewsArticleShell({
       </header>
 
       <div className="news-body container container-narrow">
+        <div className="news-body-byline">
+          <span>By {hasAuthors ? authors.map((a, i) => (
+            <span key={a.slug}>
+              {i > 0 && ', '}
+              <Link href={`/authors/${a.slug}`}>{a.name}</Link>
+            </span>
+          )) : 'the Heavy Metal Tested editorial desk'}</span>
+          <span className="news-body-byline-separator">|</span>
+          <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
+        </div>
+
         {hasKeywords(keywords) && (
           <div className="article-keywords" style={{ marginBottom: 'var(--iu-space-lg)' }}>
             {keywords!.map((kw) => (

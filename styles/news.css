@@ -174,6 +174,29 @@
   padding-block: var(--iu-space-xl) var(--iu-space-3xl);
 }
 
+.news-body-byline {
+  font-size: var(--iu-ts-14);
+  color: var(--iu-text-secondary);
+  margin-bottom: var(--iu-space-lg);
+  padding-bottom: var(--iu-space-md);
+  border-bottom: 1px solid var(--iu-border);
+}
+
+.news-body-byline a {
+  color: var(--iu-crimson);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.news-body-byline a:hover {
+  text-decoration: underline;
+}
+
+.news-body-byline-separator {
+  margin-inline: 0.5em;
+  color: var(--iu-border);
+}
+
 /* Section markers for structured briefing headings */
 .news-content h2 {
   font-family: var(--iu-font-serif);
