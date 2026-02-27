@@ -20,17 +20,57 @@ interface ContentEditorProps {
   sections?: SectionDef[];
 }
 
+const COMPRESS_MAX_DIMENSION = 1920;
+const COMPRESS_QUALITY = 0.85;
+const COMPRESS_THRESHOLD = 3 * 1024 * 1024; // compress if over 3 MB
+
+function compressImage(file: File): Promise<File> {
+  return new Promise((resolve, reject) => {
+    if (file.size <= COMPRESS_THRESHOLD && !file.type.includes('bmp') && !file.type.includes('tiff')) {
+      return resolve(file);
+    }
+    const img = new Image();
+    img.onload = () => {
+      let { width, height } = img;
+      if (width > COMPRESS_MAX_DIMENSION || height > COMPRESS_MAX_DIMENSION) {
+        const scale = COMPRESS_MAX_DIMENSION / Math.max(width, height);
+        width = Math.round(width * scale);
+        height = Math.round(height * scale);
+      }
+      const canvas = document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return reject(new Error('Canvas not supported'));
+      ctx.drawImage(img, 0, 0, width, height);
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) return reject(new Error('Compression failed'));
+          const ext = blob.type === 'image/png' ? '.png' : '.webp';
+          const name = file.name.replace(/\.[^.]+$/, ext);
+          resolve(new File([blob], name, { type: blob.type }));
+        },
+        'image/webp',
+        COMPRESS_QUALITY,
+      );
+    };
+    img.onerror = () => reject(new Error('Could not read image'));
+    img.src = URL.createObjectURL(file);
+  });
+}
+
 function ImageUpload({ value, onChange, fieldName, destination }: { value: string; onChange: (v: string) => void; fieldName: string; destination?: string }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
-  async function handleFile(file: File) {
+  async function handleFile(rawFile: File) {
     setUploading(true);
     setError('');
-    const form = new FormData();
-    form.append('file', file);
-    form.append('destination', destination || 'public/images/uploads');
     try {
+      const file = await compressImage(rawFile);
+      const form = new FormData();
+      form.append('file', file);
+      form.append('destination', destination || 'public/images/uploads');
       const res = await fetch('/api/upload', { method: 'POST', body: form });
       if (!res.ok) {
         let msg = `Upload failed (${res.status})`;
