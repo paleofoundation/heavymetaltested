@@ -20,7 +20,7 @@ interface ContentEditorProps {
   sections?: SectionDef[];
 }
 
-function ImageUpload({ value, onChange, fieldName }: { value: string; onChange: (v: string) => void; fieldName: string }) {
+function ImageUpload({ value, onChange, fieldName, destination }: { value: string; onChange: (v: string) => void; fieldName: string; destination?: string }) {
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
 
@@ -29,17 +29,23 @@ function ImageUpload({ value, onChange, fieldName }: { value: string; onChange: 
     setError('');
     const form = new FormData();
     form.append('file', file);
-    form.append('destination', 'public/images/authors');
+    form.append('destination', destination || 'public/images/uploads');
     try {
       const res = await fetch('/api/upload', { method: 'POST', body: form });
-      const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Upload failed');
-      } else {
-        onChange(data.path);
+        let msg = `Upload failed (${res.status})`;
+        try {
+          const data = await res.json();
+          if (data.error) msg = data.error;
+        } catch { /* non-JSON response */ }
+        setError(msg);
+        return;
       }
-    } catch {
-      setError('Upload failed');
+      const data = await res.json();
+      onChange(data.path);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`Upload failed: ${msg}`);
     } finally {
       setUploading(false);
     }
@@ -53,7 +59,13 @@ function ImageUpload({ value, onChange, fieldName }: { value: string; onChange: 
           <img
             src={value}
             alt={fieldName}
-            style={{ width: 64, height: 64, borderRadius: '50%', objectFit: 'cover', border: '2px solid var(--iu-border)' }}
+            style={{
+              width: fieldName === 'avatar' ? 64 : 120,
+              height: fieldName === 'avatar' ? 64 : 68,
+              borderRadius: fieldName === 'avatar' ? '50%' : 'var(--iu-radius-md)',
+              objectFit: 'cover',
+              border: '2px solid var(--iu-border)',
+            }}
           />
           <span style={{ fontSize: 'var(--iu-ts-12)', color: 'var(--iu-text-muted)', wordBreak: 'break-all' }}>{value}</span>
         </div>
@@ -335,6 +347,10 @@ export default function ContentEditor({ contentType, slug, fields, initialFrontm
                   value={(frontmatter[field.name] as string) ?? ''}
                   onChange={(v) => setField(field.name, v)}
                   fieldName={field.name}
+                  destination={
+                    field.name === 'avatar' ? 'public/images/authors'
+                      : `public/images/${contentType}`
+                  }
                 />
               )}
               {field.type === 'authorPicker' && (

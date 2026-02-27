@@ -2,8 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getToken } from 'next-auth/jwt';
 import { isGitHubEnabled, writeBinaryToGitHub } from '@/lib/github';
 
+export const runtime = 'nodejs';
+export const maxDuration = 30;
+
 const ALLOWED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg'];
-const MAX_SIZE = 5 * 1024 * 1024; // 5 MB
+const MAX_SIZE = 10 * 1024 * 1024; // 10 MB
 
 export async function POST(req: NextRequest) {
   const token = await getToken({ req });
@@ -28,7 +31,7 @@ export async function POST(req: NextRequest) {
   }
 
   if (file.size > MAX_SIZE) {
-    return NextResponse.json({ error: 'File exceeds 5 MB limit' }, { status: 400 });
+    return NextResponse.json({ error: `File exceeds ${MAX_SIZE / 1024 / 1024} MB limit` }, { status: 400 });
   }
 
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-').toLowerCase();
