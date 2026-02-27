@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import type { AuthorInfo } from '@/lib/authors';
+import ShareBar from './ShareBar';
 
 interface NewsArticleShellProps {
   title: string;
+  slug: string;
   description: string;
   publishedAt: string;
   updatedAt?: string;
@@ -36,6 +38,7 @@ const CATEGORY_LABELS: Record<string, string> = {
 
 export default function NewsArticleShell({
   title,
+  slug,
   description,
   publishedAt,
   updatedAt,
@@ -51,6 +54,7 @@ export default function NewsArticleShell({
   const hasFeaturedImage = !!featuredImage;
   const hasTopics = (metals && metals.length > 0) || (categories && categories.length > 0);
   const hasAuthors = authors && authors.length > 0;
+  const shareUrl = `https://www.heavymetalfacts.com/news/${slug}`;
 
   return (
     <article className="news-article">
@@ -112,25 +116,46 @@ export default function NewsArticleShell({
       </header>
 
       <div className="news-body container container-narrow">
-        <div className="news-body-byline">
-          <span>By {hasAuthors ? authors.map((a, i) => (
-            <span key={a.slug}>
-              {i > 0 && ', '}
-              <Link href={`/authors/${a.slug}`}>{a.name}</Link>
-            </span>
-          )) : 'the Heavy Metal Tested editorial desk'}</span>
-          <span className="news-body-byline-separator">|</span>
-          <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
-        </div>
+        <div className="news-body-layout">
+          {/* Sticky sidebar — desktop only, hidden by CSS on smaller screens */}
+          <aside>
+            <ShareBar url={shareUrl} title={title} description={description} variant="sticky" label="Share" />
+          </aside>
 
-        {hasKeywords(keywords) && (
-          <div className="article-keywords" style={{ marginBottom: 'var(--iu-space-lg)' }}>
-            {keywords!.map((kw) => (
-              <span key={kw} className="article-keyword">{kw}</span>
-            ))}
+          <div>
+            {/* Byline + inline share row */}
+            <div className="news-body-byline-row">
+              <div className="news-body-byline">
+                <span>By {hasAuthors ? authors.map((a, i) => (
+                  <span key={a.slug}>
+                    {i > 0 && ', '}
+                    <Link href={`/authors/${a.slug}`}>{a.name}</Link>
+                  </span>
+                )) : 'the Heavy Metal Tested editorial desk'}</span>
+                <span className="news-body-byline-separator">|</span>
+                <time dateTime={publishedAt}>{formatDate(publishedAt)}</time>
+              </div>
+              <ShareBar url={shareUrl} title={title} description={description} variant="inline" />
+            </div>
+
+            {hasKeywords(keywords) && (
+              <div className="article-keywords" style={{ marginBottom: 'var(--iu-space-lg)' }}>
+                {keywords!.map((kw) => (
+                  <span key={kw} className="article-keyword">{kw}</span>
+                ))}
+              </div>
+            )}
+
+            <div className="news-content article-content" dangerouslySetInnerHTML={{ __html: html }} />
+
+            {/* End-of-article share CTA */}
+            <div className="news-share-cta">
+              <p className="news-share-cta-heading">Found this useful? Share it.</p>
+              <p className="news-share-cta-sub">Help others stay informed about heavy metal safety.</p>
+              <ShareBar url={shareUrl} title={title} description={description} variant="inline" />
+            </div>
           </div>
-        )}
-        <div className="news-content article-content" dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
       </div>
     </article>
   );

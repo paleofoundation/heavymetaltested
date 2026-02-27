@@ -46,6 +46,7 @@ export default async function NewsPostPage({ params }: { params: { postSlug: str
   return (
     <NewsArticleShell
       title={page.title}
+      slug={page.slug}
       description={page.description}
       publishedAt={page.publishedAt}
       updatedAt={page.updatedAt}
