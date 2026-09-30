@@ -30,15 +30,40 @@ type HomeFields = {
   card2LinkUrl: string;
   card3Title: string;
   card3Description: string;
+  faqQuestion: string;
+  faqAnswer: string;
   references: string[];
 };
+
+function faqPageJsonLd(question: string, answer: string) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: answer
+        }
+      }
+    ]
+  };
+}
 
 export default async function HomePage() {
   const latest = getAll<News>('news').slice(0, 3);
   const page = await getBySlug<HomeFields>('pages', 'home');
 
+  const faqJsonLd = faqPageJsonLd(page.faqQuestion, page.faqAnswer);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, '\\u003c') }}
+      />
       <section className="hero">
         <div className="container hero-grid">
           <div className="hero-text">
@@ -114,6 +139,12 @@ export default async function HomePage() {
           <p>{page.card3Description}</p>
           <input aria-label="newsletter" className="search-input" placeholder="Email address" />
         </div>
+      </section>
+
+      <section className="section container" aria-labelledby="homepage-faq-heading">
+        <h2 id="homepage-faq-heading">FAQ</h2>
+        <h3>{page.faqQuestion}</h3>
+        <p>{page.faqAnswer}</p>
       </section>
     </>
   );
